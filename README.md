@@ -1,2 +1,2 @@
 # QFT-Note
-used for review and communicaton
+used for reviewing and communicaton
