@@ -1,7 +1,13 @@
 # 忽略Logs
 logs
 *.log
-
+*.out
+*.aux
+*.toc
+*.bbl
+*.dvi
+*.pdf
+*.bcf
 # 不忽略 README.md 文件
 !README.md
 

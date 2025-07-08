@@ -5,53 +5,18 @@
 \hypersetup{pageanchor=true}
 %add preface chapter here if needed
 
-%  \chapter{群论基础}
-%  \begin{definition}{群(group)}{群}
-%      集合 $G$ 配以满足以下条件的映射 $G\times G \rightarrow G$(叫群乘法)称为群(group).
-%      \begin{enumerate}
-%          \item $(g_1g_2)g_3 = g_1(g_2g_3) \quad \forall g_1,g_2,g_3 \in G$
-%          \item $\exists$ 恒等元(identity element) $e \in G$ 使得 $eg = ge = g, \quad \forall g \in G$
-%          \item $\forall g \in  G$, $\exists$ 逆元(inverse element) $g^{-1} \in G$ 使得 $g^{-1}g = gg^{-1}=g $
-%      \end{enumerate}
-%  \end{definition}
-%  \begin{note}
-%      恒等元是唯一的,逆元也是唯一的.
-%  \end{note}
-% \begin{definition}{}{}
-%       乘法满足交换律的群称为 阿贝尔群(Abelian group).只含有限个元素的群称为 有限群(finite group), 否则称为 无限(infinite group).群 $G$ 的子集 $H$ 称为 $G$ 的 子群(subsetgroup), 若 $H$ 用 $G$ 的乘法也构成群.
-%  \end{definition}
-%  \begin{definition}{}{}
-%      设 $G$ 和 $G'$ 群,映射 $\mu :G\rightarrow G'$ 叫 同态(homomorphism),若
-%      $$
-%      \mu(g_1g_2) = \mu(g_1)\mu(g_2),\quad \forall g_1, g_2 \in G
-%      $$
-%      同态本质上是确保群乘法的.
-%  \end{definition}
-%  \begin{theorem}
-%     同态映射 $\mu :G\rightarrow G'$ 具有以下性质：
-%  \begin{enumerate}
-%      \item 若 $e,e'$ 是 $G,G'$ 的恒等元,则 $\mu(e) = e'$.这一性质,是因为恒等元在不同群具有唯一性.
-%      \item  $\mu(g^{-1}) = \mu(g)^{-1},\quad \forall g \in G$
-%              证明：
-%              $$
-%              e' = \mu(e) = \mu({g^{-1}}g) = \mu(g^{-1}) \mu(g)
-%              $$
-%              根据逆元的定义,可知
-%              $$
-%              \mu(g)^{-1} = \mu(g^{-1})
-%              $$
-%      \item $\mu[G]$ 是 $G'$ 的子群,当 $G$ 是阿贝尔群时, $\mu[G]$ 是 $G'$ 的阿贝尔子群.
-%              $$
-%              \mu(g_1)\mu(g_2) = \mu(g_1g_2) = \mu(g_2g_1) = \mu(g_2)\mu(g_1)
-%              $$
-%  \end{enumerate}
-%  \end{theorem}
-% \begin{definition}{}{同构}
-% 	一一到上的同态映射称为 同构(isomorphism).又称 群同构.同构 $\mu:G\rightarrow G'$ 称为群 $G$ 上的 自同构(automorphism).
-% \end{definition}
+\chapter{Klein-Gorden Field}
+\section{从量子力学到量子场论}
 从量子力学到量子场论，我们首先要问的是为什么我们不能直接对粒子进行量子化(就像量子化非相对论粒子)。省流：解释了单粒子相对论性波动方程的负能态与负概率，同时
 对于多粒子态的因果性和不同数目粒子态间的转换。
 
+\subsection{振幅计算}
+    考虑一个自由粒子从$x_0$处传播到$x$的过程。我们可以用路径积分的方法来计算这个过程的振幅。
+    \begin{align*}
+        U(t) = & \Bra{\bm{x}}  e^{-i\frac{\bm{p}^2}{2m}}  \Ket{\bm{x_0}} \\
+             = & \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^3} \Bra{\bm{x}} e^{-i\frac{\bm{p}^2}{2m}t} \Ket{\bm{p}} \Braket{\bm{p} }{ \bm{x_0}} \\
+             = &0
+    \end{align*}
 
 对于 $\forall g\in G$, 可构造一个称为 伴随同构(adjoint isomorphism) 的自同构映射,又称 内自同构(inner isomorphiam), 记作 $I_g : G \rightarrow G$, 定义为：
      $$

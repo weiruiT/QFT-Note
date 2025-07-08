@@ -1,16 +1,19 @@
 \contentsline {part}{第一部分\hspace {1em}书本解读}{2}{part.1}%
-\contentsline {chapter}{\numberline {第一章}李群}{5}{chapter.1}%
-\contentsline {chapter}{\numberline {第二章}李代数}{7}{chapter.2}%
-\contentsline {chapter}{\numberline {第三章}单参子群和指数映射}{9}{chapter.3}%
-\contentsline {chapter}{\numberline {第四章}常用李群及其李代数}{12}{chapter.4}%
-\contentsline {section}{\numberline {4.1}GL(m)群(一般线性群,general linear group)}{12}{section.4.1}%
-\contentsline {section}{\numberline {4.2}O(m)群(正交群,orthohonal group)}{13}{section.4.2}%
-\contentsline {section}{\numberline {4.3}O(1,3)群(洛伦兹群,The Lorentz group)}{15}{section.4.3}%
-\contentsline {section}{\numberline {4.4}U(m)群(酉群,Unitary group)}{18}{section.4.4}%
-\contentsline {section}{\numberline {4.5}E(m)群(欧氏群)}{22}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Poincar\'{e}群(庞加莱群)}{23}{section.4.6}%
-\contentsline {chapter}{\numberline {第五章}李代数的结构常数}{25}{chapter.5}%
-\contentsline {chapter}{\numberline {第六章}李变换群和killing矢量场}{32}{chapter.6}%
-\contentsline {chapter}{\numberline {第七章}伴随表示和killing型}{38}{chapter.7}%
-\contentsline {section}{\numberline {7.1}伴随表示}{38}{section.7.1}%
-\contentsline {section}{\numberline {7.2}killing型}{41}{section.7.2}%
+\contentsline {chapter}{\numberline {第一章}Klein-Gorden Field}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}从量子力学到量子场论}{3}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}振幅计算}{3}{subsection.1.1.1}%
+\contentsline {chapter}{\numberline {第二章}李群}{5}{chapter.2}%
+\contentsline {chapter}{\numberline {第三章}李代数}{7}{chapter.3}%
+\contentsline {chapter}{\numberline {第四章}单参子群和指数映射}{9}{chapter.4}%
+\contentsline {chapter}{\numberline {第五章}常用李群及其李代数}{12}{chapter.5}%
+\contentsline {section}{\numberline {5.1}GL(m)群(一般线性群,general linear group)}{12}{section.5.1}%
+\contentsline {section}{\numberline {5.2}O(m)群(正交群,orthohonal group)}{13}{section.5.2}%
+\contentsline {section}{\numberline {5.3}O(1,3)群(洛伦兹群,The Lorentz group)}{15}{section.5.3}%
+\contentsline {section}{\numberline {5.4}U(m)群(酉群,Unitary group)}{18}{section.5.4}%
+\contentsline {section}{\numberline {5.5}E(m)群(欧氏群)}{22}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Poincar\'{e}群(庞加莱群)}{23}{section.5.6}%
+\contentsline {chapter}{\numberline {第六章}李代数的结构常数}{25}{chapter.6}%
+\contentsline {chapter}{\numberline {第七章}李变换群和killing矢量场}{32}{chapter.7}%
+\contentsline {chapter}{\numberline {第八章}伴随表示和killing型}{38}{chapter.8}%
+\contentsline {section}{\numberline {8.1}伴随表示}{38}{section.8.1}%
+\contentsline {section}{\numberline {8.2}killing型}{41}{section.8.2}%
