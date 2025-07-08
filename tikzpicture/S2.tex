@@ -1,0 +1,62 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{quiver}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        view={60}{30}, % 视角
+        axis lines=middle,
+        xlabel={$x$}, ylabel={$y$}, zlabel={$z$},
+        xlabel style={anchor=north},
+        ylabel style={anchor=west},
+        zlabel style={anchor=south},
+        domain=0:180, % θ 范围
+        y domain=0:360, % φ 范围
+        samples=10, % 样本点数
+        samples y=10,
+    ]
+        % 绘制球面
+        \addplot3[surf, opacity=0.3] (
+            {sin(x)*cos(y)},
+            {sin(x)*sin(y)},
+            {cos(x)}
+        );
+        
+        % 矢量场 ξ1
+        \addplot3[quiver, domain=0:180, y domain=0:360, samples=10, samples y=10, 
+                  quiver/u={cos(y)}, 
+                  quiver/v={-cot(x)*sin(y)}, 
+                  quiver/w={0},
+                  -stealth, blue] (
+            {sin(x)*cos(y)},
+            {sin(x)*sin(y)},
+            {cos(x)}
+        );
+        
+        % 矢量场 ξ2
+        \addplot3[quiver, domain=0:180, y domain=0:360, samples=10, samples y=10, 
+                  quiver/u={sin(y)}, 
+                  quiver/v={cot(x)*cos(y)}, 
+                  quiver/w={0},
+                  -stealth, red] (
+            {sin(x)*cos(y)},
+            {sin(x)*sin(y)},
+            {cos(x)}
+        );
+        
+        % 矢量场 ξ3
+        \addplot3[quiver, domain=0:180, y domain=0:360, samples=10, samples y=10, 
+                  quiver/u={0}, 
+                  quiver/v={0}, 
+                  quiver/w={1},
+                  -stealth, green] (
+            {sin(x)*cos(y)},
+            {sin(x)*sin(y)},
+            {cos(x)}
+        );
+    \end{axis}
+\end{tikzpicture}
+\end{document}

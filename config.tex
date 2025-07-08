@@ -1,0 +1,93 @@
+\title{QFT 2025 年第一期}
+\subtitle{量子场论}
+
+\author{Thoria Tong}
+\institute{Elegant\LaTeX{} Program}
+\date{\today}
+%\version{4.5}
+%\bioinfo{邮箱}{}
+
+\extrainfo{多少事从来急，天地转，光阴迫。一万年太久，只争朝夕。}
+
+\setcounter{tocdepth}{3}
+
+% \logo{logo-blue.png}
+\cover{figure/acs4}
+
+% 修改标题页的橙色带
+\definecolor{customcolor}{RGB}{245, 250, 246}
+\colorlet{coverlinecolor}{customcolor}
+% Packages
+%\usepackage{standalone}
+\usepackage{subfiles}%多文件管理
+
+\usepackage{amsmath}%数学符号
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}%引入右侧大括号使用
+
+\usepackage{graphicx}   %用于插入和处理图形
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+% 绘图所需的TikZ子库
+
+\usepackage{booktabs} % 引入 booktabs 宏包以创建三线表
+\usepackage{tabularx}%控制表格长度
+
+
+% 设置主字体为仿宋（FZSSK.TTF），加粗字体为黑体（FZHTK.TTF），斜体为楷体（FZKTK.TTF）
+\setCJKmainfont[
+	Path={E:/BOOKS/Quantum Field Theory/QFT/font_2/},
+	BoldFont={FZHTK.TTF},
+	ItalicFont={FZKTK.TTF},
+	BoldItalicFont={FZHTK.TTF} % 将粗斜体指定为黑体
+]{FZSSK.TTF}
+% % 设置无衬线字体为楷体（FZKTK.TTF），加粗字体为黑体（FZHTK.TTF）
+% \setCJKsansfont[Path={E:/postgraduate/note/font_2/}, BoldFont={FZHTK.TTF}]{FZKTK.TTF}
+%
+% % 设置等宽字体为仿宋（FZFSK.TTF），加粗字体为黑体（FZHTK.TTF）
+% \setCJKmonofont[Path={E:/postgraduate/note/font_2/}, BoldFont={FZHTK.TTF}]{FZFSK.TTF}
+%
+% % 定义新的字体族 zhsong，为仿宋（FZSSK.TTF）
+% \setCJKfamilyfont{zhsong}[Path={E:/postgraduate/note/font_2/}]{FZSSK.TTF}
+%
+% % 定义新的字体族 zhhei，为黑体（FZHTK.TTF）
+% \setCJKfamilyfont{zhhei}[Path={E:/postgraduate/note/font_2/}]{FZHTK.TTF}
+%
+% % 定义新的字体族 zhkai，为楷体（FZKTK.TTF），加粗时用黑体（FZHTK.TTF）
+% \setCJKfamilyfont{zhkai}[Path={E:/postgraduate/note/font_2/}, BoldFont={FZHTK.TTF}]{FZKTK.TTF}
+%
+% % 定义新的字体族 zhfs，为仿宋（FZFSK.TTF），加粗时用黑体（FZHTK.TTF）
+% \setCJKfamilyfont{zhfs}[Path={E:/postgraduate/note/font_2/}, BoldFont={FZHTK.TTF}]{FZFSK.TTF}
+%
+% % 设置无衬线字体为楷体（FZKTK.TTF），加粗字体为黑体（FZHTK.TTF）
+\setCJKsansfont[Path={E:/BOOKS/Quantum Field Theory/QFT/font_2/}, BoldFont={FZHTK.TTF}]{FZKTK.TTF}
+
+% 设置等宽字体为仿宋（FZFSK.TTF），加粗字体为黑体（FZHTK.TTF）
+\setCJKmonofont[Path={E:/BOOKS/Quantum Field Theory/QFT/font_2/}, BoldFont={FZHTK.TTF}]{FZFSK.TTF}
+
+% 定义新的字体族 zhsong，为仿宋（FZSSK.TTF）
+\setCJKfamilyfont{zhsong}[Path={E:/BOOKS/Quantum Field Theory/QFT/font_2/}]{FZSSK.TTF}
+
+% 定义新的字体族 zhhei，为黑体（FZHTK.TTF）
+\setCJKfamilyfont{zhhei}[Path={E:/BOOKS/Quantum Field Theory/QFT/font_2/}]{FZHTK.TTF}
+
+% 定义新的字体族 zhkai，为楷体（FZKTK.TTF），加粗时用黑体（FZHTK.TTF）
+\setCJKfamilyfont{zhkai}[Path={E:/BOOKS/Quantum Field Theory/QFT/font_2/}, BoldFont={FZHTK.TTF}]{FZKTK.TTF}
+
+% 定义新的字体族 zhfs，为仿宋（FZFSK.TTF），加粗时用黑体（FZHTK.TTF）
+\setCJKfamilyfont{zhfs}[Path={E:/BOOKS/Quantum Field Theory/QFT/font_2/}, BoldFont={FZHTK.TTF}]{FZFSK.TTF}
+
+
+% 定义快捷命令 \songti 代表仿宋字体
+\newcommand*{\songti}{\CJKfamily{zhsong}}
+
+% 定义快捷命令 \heiti 代表黑体字体
+\newcommand*{\heiti}{\CJKfamily{zhhei}}
+
+% 定义快捷命令 \kaishu 代表楷体字体
+\newcommand*{\kaishu}{\CJKfamily{zhkai}}
+
+% 定义快捷命令 \fangsong 代表仿宋字体
+\newcommand*{\fangsong}{\CJKfamily{zhfs}}
+

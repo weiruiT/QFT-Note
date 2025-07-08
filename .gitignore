@@ -1,0 +1,15 @@
+# 忽略Logs
+logs
+*.log
+
+# 不忽略 README.md 文件
+!README.md
+
+# 匹配任何名字带有 test 的文件和目录
+# test
+
+
+# 忽略font_2目录
+font_2/
+
+figure
