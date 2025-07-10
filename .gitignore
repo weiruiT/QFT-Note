@@ -13,9 +13,47 @@ logs
 
 # 匹配任何名字带有 test 的文件和目录
 # test
-
+config.tex
 
 # 忽略font_2目录
 font_2/
 
 figure/
+
+# Temporary files
+
+.latex-cache
+*.acn
+*.acr
+*.alg
+*.blg
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.lot
+*.maf
+*.mtc
+*.mtc0
+*.nav
+*.nlo
+*.pdfsync
+*.ps
+*.snm
+*.synctex.gz
+*.vrb
+*.xdy
+*.tdo
+
+
+# Output
+
+*.sty
+doc/metropolistheme.pdf
+demo/demo.pdf

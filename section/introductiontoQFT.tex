@@ -41,13 +41,20 @@
                                                                       = & \frac{1}{ipr} \left( e^{ipr}-e^{-ipr} \right) \notag \\
                                                                       = & \frac{2}{pr} \sin(pr) \label{eq:U_r(t)}
     \end{align*}
-
-    \begin{lemma}
-        $K_2$型椭圆积分：
+    \begin{lemma}{第二类修正贝塞尔函数(modified Bessel function of the second kind)$K_{\mu}(x)$}
+        这是贝塞尔函数的一种，通常用于解决涉及柱对称问题的微分方程，常见于物理学中的波动、热传导和量子力学等领域。修正贝塞尔函数满足修正贝塞尔方程：
+        \begin{equation}
+            x^2\frac{d^2y}{dx^2} + x\frac{dy}{dx} -(x^2+\mu^2)y = 0
+        \end{equation}
+        其中$\mu$是函数的阶数，$x$是自变量，其在自变量$x>0$时为实数，$x\approx \infty$时指数衰减($ x\gg 1$时$K_2(x)\approx \sqrt{\frac{\pi}{2x}}e^{-x}$)。特别的对于阶数为2的第二类修正贝塞尔函数$K_2(x)$，我们有递推关系：
+        \begin{equation}
+            K_2(x) = K_0 + \frac{2}{x} K_1(x)
+        \end{equation}
+        经过系列推导可得：(待补充)
         \begin{equation}
             \int_{0}^{\infty} xe^{-\beta \sqrt{\gamma^2 +x^2}} \sin(bx)\,dx = \frac{b\beta \gamma^2}{\beta^2 + b^2} K_2(\gamma\sqrt{\beta^2+b^2})
         \end{equation}
-        我们有$ x\gg 1$时$K_2(x)\approx \sqrt{\frac{\pi}{2x}}e^{-x}$
+        
     \end{lemma}
     那么\eqref{eq:U_r(t)}又等于
     \begin{align}
@@ -63,9 +70,64 @@
 
     而在量子场论中，一个粒子从$x_0$处传播到$x$处和反粒子从$x$传播到$x_0$处无法区分，因此散射振幅叠加后相消。(详见2.4)
 \section{经典场论}
+以下式子仅考虑单粒子态(故只需一个$\phi$描述)
 \subsection{Lagrangian Field Theory}
+    区别于理论力学中的Lagrangian Mechanics，场论中将时间t与空间坐标$q_i$平权，重写作用量S:
+    \begin{equation}
+        S = \int L\,dt = \int \mathcal{L} (\phi,\partial_{\mu}\phi)d^4x
+    \end{equation}
+    其中$\mathcal{L}$称经典场$\phi(\bm{x})$的拉格朗日密度，同理由最小作用量原理：
+   \begin{align}
+        0 = & \delta S \notag \\
+          = & \int d^4x\,\left\{ \frac{\partial\mathcal{L}}{\partial \phi}\delta \phi + \frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\phi)}\delta(\partial_{\mu}\phi) \right\} \notag \\
+          = & \int d^4x\,\left\{ \frac{\partial\mathcal{L}}{\partial \phi}\delta \phi + \partial_{\mu}\left( \frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}\delta\phi \right) - \partial_{\mu}\left( \frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)} \right)\delta\phi \right\}
+    \end{align}
+    第二项积分在四维时空的边界上，由于初始条件$\delta\phi = 0$在边界是给定的，这一项积分结果为0。又由于剩余积分项中$\delta\phi = 0$的任意性，由此要求大括号里为0，即：
+    \begin{equation}
+        \partial_{\mu}\left( \frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)} \right) - \frac{\partial\mathcal{L}}{\partial\phi} = 0
+    \end{equation}
 \subsection{Hamitonian Field Theory}
+    场论的拉格朗日公式特别适用于相对论动力学,因为所有的表达式都是显式的洛伦兹不变的。尽管如此，Peskin在本书的第一部分中任使用哈密顿公式，因为这将使得过渡到量子力学更容易。在Hamitonian Mechanics中，我们通过勒让德变换将每一广义坐标$q_i$与广义动量
+    $p_i \equiv \frac{\partial L}{\partial\dot{q_i}}$耦合，类似的在场论中：
+    \begin{align}
+        p(\bm{x}) \equiv & \frac{\partial L}{\partial \dot(\phi)(\bm{x})} = \frac{\partial}{\partial \dot(\phi)(\bm{x})} \int \mathcal{L}(\phi(\bm{y}),\dot{\phi(\bm{y})})\,d^3y \notag \\
+\overset{\text{离散化}}{\sim} & \frac{\partial}{\partial \dot{\phi}(\bm{x})} \sum_{\bm{y}} \mathcal{L}( \phi(\bm{y}),\dot{\phi}(\bm{y}) )\,d^3y \notag \\
+                        = & \pi (\bm{x})\,d^3x
+    \end{align}
+    其中$ \pi (\bm{x}) = \frac{\partial\mathcal{L}}{\partial \dot{\phi}(\bm{x})} $称经典场$\phi(\bm{x})$的共轭动量密度。由此带入勒让德变换得到哈密顿量：
+    \begin{equation}
+        H = \sum_{\bm{x}} p{\bm{x}} \dot{\phi}(\bm{x})-L = \int d^3x\,\left[ \pi(\bm{x})\phi(\bm{x}) - \mathcal{L} \right] = \int d^3x\,\mathcal{H}
+    \end{equation}
+    上式由离散谱过渡到连续谱，其中$\mathcal{H}$称哈密顿量密度。
+    \begin{example}
+        以标量场$\phi(x)$为例，将$\phi(x)$视作广义坐标，按L=T-V的形式构建拉氏量：
+        \begin{equation}
+            \mathcal{L} = \frac{1}{2} \dot{\phi} - \frac{1}{2}(\nabla\phi)^2 - \frac{1}{2}m^2\phi^2 = \frac{1}{2}(\partial_{\mu}\phi)^2-\frac{1}{2}m^2\phi^2 = \frac{1}{2}\partial_{\mu}\phi\,\partial^{\nu}\phi\cdot\eta_{\mu\nu}-\frac{1}{2}m^2\phi^2
+        \end{equation}
+        上式使用西海岸度规(+,-,-,-)。带入E-L方程1.11式，我们得到:
+        \begin{equation}
+            \left( \frac{\partial^2}{\partial t^2}-\nabla^2+m^2 \right)\phi = 0 = \left( \partial_{\mu}\partial^{\mu} +m^2 \right)\phi
+        \end{equation}
+        这就是我们熟知的K-G方程(但是在当前的语境下，这个场还是经典场，并未量子化)。进一步我们得到哈密顿量：
+        \begin{equation}
+            H = \int d^3x \, \mathcal{H} = \int d^3x\,\left[ \frac{1}{2}\pi^2 + \frac{1}{2}(\nabla \phi)^2 + \frac{1}{2}m^2\phi^2 \right]
+        \end{equation}
+        我们可以认为三个项分别是，在场在时间中移动的能量，在空间切变的能量，以及场自量。在第2.3节和第2.4节中，我们将进一步研究哈密顿量。
+    \end{example}
 \subsection{Noether's Theory}
+    本节主要内容为探究经典场论中对称性与守恒律之间关系，可以证明，一种对称变换对应一种守恒量。在K-G场中，类比变分法对场进行一无穷小变换：
+    \begin{equation}
+        \phi(x) \rightarrow \phi'(x) = \phi(x) + \alpha \Delta \phi(x)
+    \end{equation}
+    其中$\alpha$是无穷小参量，$\Delta \phi$是场构型的变化。如果在此变化下，拉格朗日量仅仅改变一表面项，对应的作用量是不变化的。如此，导出的运动方程也不变化。即：
+    \begin{equation}
+        \mathcal{L}(x)\rightarrow \mathcal{L}' = \mathcal{L} + \alpha \Delta \mathcal{L} = \mathcal{L} + \alpha \partial_{\mu}
+    \end{equation}
+
+\begin{note}
+    初见这个变换形式会感觉极不自然，明明只需$\Delta \phi$足以描述场的变化量，为什么要多此一举添加一个无穷小参量$\alpha$。
+\end{note}
+
 \section{谐振子视角下的K-G场}
 \section{四维时空中的K-G场理论}
 \begin{note}
