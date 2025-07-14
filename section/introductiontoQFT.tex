@@ -125,11 +125,44 @@
     \end{equation}
 
 \begin{note}
-    初见这个变换形式会感觉极不自然，明明只需$\Delta \phi$足以描述场的变化量，为什么要多此一举添加一个无穷小参量$\alpha$。
-\end{note}
+    初见这个变换形式会感觉极不自然，明明只需$\Delta \phi$足以描述场的变化量，为什么要多此一举添加一个无穷小参量$\alpha$。不加$\alpha$思路如下：
+    \begin{align}
+        \Delta \mathcal{L} = & \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)}\Delta \partial_{\mu}\phi + \frac{\partial \mathcal{L}}{\partial\phi}\Delta\phi \notag \\
+                           = & \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi \right) - \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \right)\Delta\phi + \frac{\partial \mathcal{L}}{\partial \phi}\Delta\phi \notag \\
+    \overset{\text{E-L}}{=}  & \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi \right)
+    \end{align}
+    类似理论力学的分析，作用量间相差一个关于时间和坐标的函数$f(x,t)$对时间的全导数$s' = s + \frac{d}{dt}f(x,t)$对E-L方程无影响。同理在此处作用量S变化一个表面项，对时空积分后得到一标量函数，不影响S的极值点(亦不影响E-L方程)。
+    \begin{equation}
+        \Delta \mathcal{L} = \partial_{\mu}\mathcal{J}^{\mu} = \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi \right) \Rightarrow j^{\mu} = \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi -\mathcal{J}^{\mu} \right) = 0
+    \end{equation}
+    此即诺特流$j^{\mu}$。
+    
+    但是显然此处的$\alpha$并不止是个可以随意消去的常数，如果我们假定$\alpha= \alpha(\bm{x})$是局域的，则我们可以导出量子场论的规范不变性。
+    Ward恒等式（Ward identity），或更广义的Takahashi恒等式，是量子场论中规范对称性的直接结果。它表达了在量子层面，规范对称性所导致的守恒定律如何约束格林函数（关联函数）之间的关系。Ward恒等式对于证明规范理论的可重整性、保证散射振幅的规范不变性以及理解物理态的幺正性至关重要。
+    \begin{theorem}{Ward恒等式}
+        核心在于考虑积分测度的变化。
+    \end{theorem}
 
+\end{note}
+    推导过程就是上述1.19式加上系数$\alpha$。
+
+    守恒律也可以用守恒荷表示。将1.20改写
+    \begin{equation}
+        \partial_{\mu} j^{\mu} = \partial_t \rho +\overrightarrow{\nabla} \cdot \overrightarrow{j} = 0 
+    \end{equation}
+    借助电动力学里的经验我们我们将四维守恒流$j^{\mu}$拆解为时间项和空间项得到连续性方程的形式，进而类比电荷守恒律我们对全空间进行积分：
+    \begin{equation}
+        Q = \int_{all space} \partial_t \rho d^3x = \int j^0 d^3x = - \int \overrightarrow{j} \cdot \overrightarrow{dS}
+    \end{equation}
+\begin{example}
+    对于无质量K-G场Lagrangian密度为$\mathcal{L} = \frac{1}{2}(\partial_{\mu}\phi)^2 $，对场$\phi(x)$进行平移操作$\phi\rightarrow\phi+\alpha$，引起Lagrangian变化为
+    $\mathcal{L}\rightarrow\mathcal{L}' = \frac{1}{2}\left( \partial_{\mu}(\phi + \alpha) \right)^2 = \frac{1}{2}(\partial_{\mu}\phi)^2 =\mathcal{L}$。
+\end{example}
 \section{谐振子视角下的K-G场}
+
 \section{四维时空中的K-G场理论}
+
+
 \begin{note}
     若子群 $H$ 的两个左陪集有交,则两者必相等.
 \end{note}
@@ -141,13 +174,7 @@
 
     群乘法是 $\forall \mu,\nu \in A(G)$, 群乘积 $\mu,\nu \in A(G)$ 定义为 $(\mu\nu)(g) \equiv \mu(\nu(g)),\quad \forall g \in G$
 \end{definition}
-\begin{theorem}
-     以 $A_I(G)$ 代表 $G$ 上全体的自同构映射的集合,即
-     $$
-     A_I(G)\equiv\{I_g: G\rightarrow G|g \in G\}\subset A(G)
-     $$
-则 $A_I(G)$ 是群 $A(G)$ 的一个正规子群.
-\end{theorem}
+
 \begin{definition}{}{半直积群}
 设 $H$ 和 $K$ 是群,且存在同态映射 $\mu:K\rightarrow A(H),\quad \forall k \in K$, 把 $\mu(k)\in A(H)$ 简记作 $\mu_k$, 则 $G\equiv H\times K$ 配以下式的群乘法：
     $$
