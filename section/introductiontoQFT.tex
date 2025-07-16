@@ -29,17 +29,19 @@
     for all $x$ and $t$ ,$U(t) \neq 0 \Rightarrow $ 可在任意短时间内传播任意长距离
 
     利用狭相能量-动量关系式$E = \sqrt{p^2 + m^2}$代换上式中$E$：
-    \begin{align}
+    \begin{equation}
+        \begin{aligned}
         U(t) = & \Bra{\bm{x}}  e^{-i\sqrt{\bm{p}^2 + m^2}t}  \Ket{\bm{x_0}} \notag \\
              = & \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^3} \, e^{ -i\sqrt{\bm{p}^2 + m^2} t} \cdot e^{i\bm{p\cdot r}} \notag \\
-\overset{\text{球坐标系下}}{=} & \frac{1}{(2\pi)^3} \int dp \, d\theta \, d\phi \, \sin(\theta) p^2 e^{-i\sqrt{\bm{p}^2 + m^2} t} e^{ipa \cos(\theta)} \notag \\
-             = & \frac{1}{(2\pi)^2} \int_{0}^{\infty} p^2 \, e^{-i\sqrt{\bm{p}^2 + m^2} t} \, \int_{0}^{\pi} d\theta \, \sin(\theta) e^{ipa \cos(\theta)} 
-    \end{align}
+    \overset{\text{球坐标系下}}{=} & \frac{1}{(2\pi)^3} \int dp \, d\theta \, d\phi \, \sin(\theta) p^2 e^{-i\sqrt{\bm{p}^2 + m^2} t} e^{ipa \cos(\theta)} \notag \\
+                = & \frac{1}{(2\pi)^2} \int_{0}^{\infty} p^2 \, e^{-i\sqrt{\bm{p}^2 + m^2} t} \, \int_{0}^{\pi} d\theta \, \sin(\theta) e^{ipa \cos(\theta)} 
+        \end{aligned} \label{eq:1.3}
+    \end{equation}
     其中:
     \begin{align*}
         \int_{0}^{\pi} \sin(\theta) \, e^{ipr \cos(\theta)} \,d\theta = & \frac{-1}{ipr} e^{ipr\cos(\theta)}|_{0}^{\pi} \notag \\
                                                                       = & \frac{1}{ipr} \left( e^{ipr}-e^{-ipr} \right) \notag \\
-                                                                      = & \frac{2}{pr} \sin(pr) \label{eq:U_r(t)}
+                                                                      = & \frac{2}{pr} \sin(pr) 
     \end{align*}
     \begin{lemma}{第二类修正贝塞尔函数(modified Bessel function of the second kind)$K_{\mu}(x)$}
         这是贝塞尔函数的一种，通常用于解决涉及柱对称问题的微分方程，常见于物理学中的波动、热传导和量子力学等领域。修正贝塞尔函数满足修正贝塞尔方程：
@@ -56,7 +58,7 @@
         \end{equation}
         
     \end{lemma}
-    那么\eqref{eq:U_r(t)}又等于
+    那么\eqref{eq:1.3} 又等于
     \begin{align}
         U(t) = & \frac{1}{(2\pi)^2} \int_{0}^{\infty} p^2 \, e^{-i\sqrt{\bm{p}^2 + m^2} t} \, \int_{0}^{\pi} d\theta\,\sin(\theta) e^{ipa \cos(\theta)} \notag \\
              = & \frac{1}{2\pi^2r} \int_{0}^{\infty} dp \, p\,\sin(p\left| \bm{x-x_0} \right|) e^{-it\sqrt{p^2+m^2}} \notag \\
@@ -68,7 +70,7 @@
     \end{equation}
     尽管这个值很小但是同样不为0，因果性同样违背。
 
-    而在量子场论中，一个粒子从$x_0$处传播到$x$处和反粒子从$x$传播到$x_0$处无法区分，因此散射振幅叠加后相消。(详见2.4)
+    而在量子场论中，一个粒子从$x_0$处传播到$x$处和反粒子从$x$传播到$x_0$处无法区分，因此散射振幅叠加后相消。(详见\ref{ch:1.4})
 \section{经典场论}
 以下式子仅考虑单粒子态(故只需一个$\phi$描述)
 \subsection{Lagrangian Field Theory}
@@ -126,14 +128,18 @@
 
 \begin{note}
     初见这个变换形式会感觉极不自然，明明只需$\Delta \phi$足以描述场的变化量，为什么要多此一举添加一个无穷小参量$\alpha$。不加$\alpha$思路如下：
-    \begin{align}
+    \begin{equation}
+         \begin{aligned}
         \Delta \mathcal{L} = & \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)}\Delta \partial_{\mu}\phi + \frac{\partial \mathcal{L}}{\partial\phi}\Delta\phi \notag \\
                            = & \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi \right) - \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \right)\Delta\phi + \frac{\partial \mathcal{L}}{\partial \phi}\Delta\phi \notag \\
-    \overset{\text{E-L}}{=}  & \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi \right)
-    \end{align}
+        \overset{\text{E-L}}{=}  & \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi \right)
+        \end{aligned}
+    \end{equation}
+   
     类似理论力学的分析，作用量间相差一个关于时间和坐标的函数$f(x,t)$对时间的全导数$s' = s + \frac{d}{dt}f(x,t)$对E-L方程无影响。同理在此处作用量S变化一个表面项，对时空积分后得到一标量函数，不影响S的极值点(亦不影响E-L方程)。
     \begin{equation}
-        \Delta \mathcal{L} = \partial_{\mu}\mathcal{J}^{\mu} = \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi \right) \Rightarrow j^{\mu} = \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi -\mathcal{J}^{\mu} \right) = 0
+        \Delta \mathcal{L} = \partial_{\mu}\mathcal{J}^{\mu} = \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi \right) = 0 \Rightarrow j^{\mu} = \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi -\mathcal{J}^{\mu} 
+        \label{eq:1.18}
     \end{equation}
     此即诺特流$j^{\mu}$。
     
@@ -155,12 +161,67 @@
         Q = \int_{all space} \partial_t \rho d^3x = \int j^0 d^3x = - \int \overrightarrow{j} \cdot \overrightarrow{dS}
     \end{equation}
 \begin{example}
-    对于无质量K-G场Lagrangian密度为$\mathcal{L} = \frac{1}{2}(\partial_{\mu}\phi)^2 $，对场$\phi(x)$进行平移操作$\phi\rightarrow\phi+\alpha$，引起Lagrangian变化为
-    $\mathcal{L}\rightarrow\mathcal{L}' = \frac{1}{2}\left( \partial_{\mu}(\phi + \alpha) \right)^2 = \frac{1}{2}(\partial_{\mu}\phi)^2 =\mathcal{L}$。
+    对于无质量K-G场Lagrangian密度为$\mathcal{L} = \frac{1}{2}(\partial_{\mu}\phi)^2 $，对场$\phi(x)$量进行平移操作$\phi\rightarrow\phi+\alpha$，引起Lagrangian变化为
+    $\mathcal{L}\rightarrow\mathcal{L}' = \frac{1}{2}\left( \partial_{\mu}(\phi + \alpha) \right)^2 = \frac{1}{2}(\partial_{\mu}\phi)^2 =\mathcal{L}$。若要写出
+    其诺特流，有$\mathcal{L}' = \mathcal{L} + \alpha \partial_{\mu}\mathcal{J}^{\mu} = \mathcal{L} \rightarrow \partial_{\mu}\mathcal{J}^{\mu} = 0$。对于最简单的情况
+    \begin{equation}
+        \mathcal{J}^{\mu} = 0 \label{eq:1.21}
+    \end{equation}
+    带入\eqref{eq:1.18}和$\mathcal{L} = \frac{1}{2}(\partial_{\mu}\phi)^2 $：$j^{\mu} = \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi = \partial_{\mu} \phi \Delta \phi$，
+    而注意到
+    \begin{equation}
+        \phi \rightarrow \phi' = \phi + \alpha \Delta \phi = \phi + \alpha \Rightarrow \Delta \phi = 1 \notag
+    \end{equation}
+    于是有守恒流$j^{\mu} = \partial_{\mu}\phi$。
+\end{example}
+\begin{example}
+    若标量场为一复标量场，$\mathcal{L} = \left| \partial_{\mu}\phi \right| - m^2\left| \phi^2 \right| = (\partial_{\mu}\phi^*)(\partial^{\mu}\phi) - m^2 \phi^*\phi$，做U(1)变换:
+    \begin{equation}
+        \phi \rightarrow \phi' = \phi \, e^{i\alpha} \notag
+    \end{equation}
+    那么拉格朗日密度变为
+    \begin{equation}
+        \mathcal{L} \rightarrow \mathcal{L}' = \left| \partial_{\mu}\phi \right| - m^2\left| \phi^2 \right| = \mathcal{L} \notag
+    \end{equation}
+    且有：
+    \begin{equation}
+        \begin{cases}
+            \phi' = e^{i\alpha}\,\phi \approx \phi + i\alpha \phi = \phi + \alpha \Delta \phi \notag \\
+            \phi'^{*} = (e^{i\alpha} \phi)^* \approx \phi^* - i\alpha \phi^* = \phi^* + \alpha \Delta \phi^*  \\ 
+        \end{cases}
+    \end{equation}
+    同\eqref{eq:1.21}，我们有$\mathcal{J}^{\mu} = 0$。带回\eqref{eq:1.18}，我们有：
+    \begin{align}
+        j^{\mu} = & \frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\phi)} \Delta\phi + \frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\phi^*)} \Delta\phi^* \notag \\
+                = & i \left[ (\partial^{\mu}\phi^*)\phi - \phi^*(\partial^{\mu} \phi) \right] 
+    \end{align}
+\end{example}
+\begin{example}{时空坐标平移与能动张量的引出。}
+
+    将4维时空坐标做无穷小平移$x'^{\mu} = x^{\mu} - a^{\mu}$，那么场量$\phi'(x) = \phi(x+a) \overset{\text{taylor ex}}{=} \phi(x) + a^{\mu}\partial_{\mu}\phi(X) $，同理，
+    $\mathcal{L}' = \mathcal{L} + a^{\mu}\partial_{\mu}\mathcal{L}(X) = \mathcal{L} + a^{\nu}\partial_{\mu}(\delta^{\mu}_{\nu}\mathcal{L}(X)) $。对比$\mathcal{L}' = \mathcal{L} + \alpha\partial_{\mu}\mathcal{J}^{\mu}$，
+    我们得到$\mathcal{J}^{\mu} = \delta^{\mu}_{\nu}$。注意到此时指标不守恒，因为我们忽略了$a^{\mu}$和$\alpha$的区别，将$a^{\mu}$各个分量单独拿出我们有广义守恒流
+    \begin{equation}
+        T^{\mu}_{\nu} = \frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)} \partial_{\nu}\phi + \delta^{\mu}_{\nu}\mathcal{L}
+    \end{equation}
+    此即体系能动张量。
+
+    对于四维闵氏时空，我们利用度规将指标降下：
+    \begin{equation}
+        T_{\mu\nu} = \eta_{\sigma \mu} T^{\sigma}_{\nu} = \begin{pmatrix}
+            \omega & \frac{S_1}{c} & \frac{S_2}{c} & \frac{S_3}{c} \\
+            cg_{1} & T^{11} & T^{12} & T^{13} \\
+            cg_{2} & T^{21} & T^{22} & T^{23} \\
+            cg_{3} & T^{31} & T^{32} & T^{33}
+        \end{pmatrix}
+    \end{equation}
+    其中$\omega$表征体系能量密度，$S_i$表征体系能流密度。
 \end{example}
 \section{谐振子视角下的K-G场}
 
+
 \section{四维时空中的K-G场理论}
+\label{ch:1.4}
 
 
 \begin{note}
@@ -168,139 +229,6 @@
 \end{note}
     \noindent
     证明：如果两个左陪集交集不为空,则 $\exists x \in G$ 满足
-
-\begin{definition}
-    设 $G$ 是群,则 $A(G)\equiv \{\mu:G\rightarrow G|\mu\text{为自同构映射}\}$,以映射的复合为群乘法构成群,称为群 $G$ 的 自同构群.
-
-    群乘法是 $\forall \mu,\nu \in A(G)$, 群乘积 $\mu,\nu \in A(G)$ 定义为 $(\mu\nu)(g) \equiv \mu(\nu(g)),\quad \forall g \in G$
-\end{definition}
-
-\begin{definition}{}{半直积群}
-设 $H$ 和 $K$ 是群,且存在同态映射 $\mu:K\rightarrow A(H),\quad \forall k \in K$, 把 $\mu(k)\in A(H)$ 简记作 $\mu_k$, 则 $G\equiv H\times K$ 配以下式的群乘法：
-    $$
-    (h, k)(h', k'):=(h\mu_k(h'), kk'),\quad\forall h, h'\in H,\quad k, k' \in K
-    $$
-所构成的群称为 $H$ 和 $K$ 的 \textbf{半直积群(simidirect product)},记作 $G\equiv H\otimes_{S}K$
-\end{definition}
-
-
-
-\chapter{李群}
-\begin{definition}
-    若 $G$ 既是 $n$ 维(实)流形又是群,其群乘映射 $G\times G\rightarrow G$ 和求逆元映射 $G\rightarrow G$ 都是 $C^\infty$ 的,则 $G$ 叫 $n$ 维(实)李群(Lie group).
-\end{definition}
-    这里的李群一般是有限维.
-\begin{definition}
-    李群 $G$ 和 $G'$ 之间的 $C^\infty$ 同态映射 $\mu : G\rightarrow G'$ 称为 李群同态映射(Lie-group homomorphism) 李群同态 $\mu$ 称为 李群同构(Lie-group isomorphism),若 $\mu$ 是微分同胚.
-\end{definition}
-\begin{definition}
-    李群 $G$ 的子集 $H$ 称为 $G$ 的 李子群(Lie-group), 若 $H$ 既是 $G$ 的子流形又是 $G$ 的子群.
-\end{definition}
-\begin{definition}
-     $\forall g \in G$, 映射 $L_g : h \mapsto gh \quad \forall h \in G$ 叫做由 $G$ 生成的 左平移(left translation).
-\end{definition}
-\begin{enumerate}
-    \item 显然左平移映射是微分同胚的
-    \item $L_e$ 是恒等映射
-    \item $L_{gh} = L_g \circ L_h$
-    \item $L_g^{-1} = L_{g^{-1}}$
-\end{enumerate}
-\begin{definition}
-     $G$ 上的矢量场 $\bar{A}$ 叫 左不变的(left invariant), 若
-    $$
-    L_{g*} \bar{A} = \bar{A}
-    $$
-    等价形式
-    $$
-    (L_{g*}\bar{A})_{gh} = \bar{A}_{gh}
-    $$
-\end{definition}
-ps: 本节以大写字母代表矢量,字母 $+\bar{}$ 表示矢量场.
-其中 $L_{g*}$ 是由左平移映射诱导的推前映射
-等价形式推导, 根据第四章有 $(\phi_*v)|_{\phi(p)} = \phi_*(v|_p)$
-取
-    $$
-    M = N = G,\phi = L_g, v = \bar{A}, p = h, \phi(p) = gh\\
-    $$
-则
- $$ (L_{g *}\bar{A})_{gh} = L_{g*}(\bar{A}_h) $$
-便可得到第二个等价形式
-$$ L_{g*}(\bar{A}_h) =\bar{A}_{gh} $$
-\begin{theorem}{}{切空间与恒等元同构定理}
-    $G$ 上全体左不变矢量场的集合 $\mathscr{L}$ 与 $G$ 的恒等元 $e$ 的切空间 $V_e$（作为两个矢量空间）同构
-\end{theorem}
-证明：$\forall A \in V_e$,用下式定义 $G$ 上的矢量场 $\bar{A}$
-    $$ \bar{A}_g := L_{g*}A,\quad\forall g \in G $$
-这样便给出了一个映射联系了两个矢量空间（用 $\eta$ 表示映射关系）,先证明左不变,不妨令 $g = gh$
-    $$ \bar{A}_{gh} = L_{gh *}A = (L_g\circ L_h)_* A = (L_{h *}\circ L_{g*})A = (L_{g *}\circ L_{h*})A \\= L_{g *}(L_{h*}A) = L_{g*}\bar{A}_h $$
-第三步见定理 4-1-5
-随后要是证明同构,只需说明是一一到上的线性映射,线性已经满足.
-一一：如果 $\eta(A) = \eta(B) \Rightarrow A=B$, 则一一成立.
-    $$ \bar{A} = \bar{B}\Rightarrow \bar{A}_e = \bar{B}_e \Rightarrow A = B $$
-到上：$\forall A \in \mathscr{L}$ 有 $\bar{A}_e \in V_e$
-基本思想是构造法,就是利用 $\mathscr{L}$ 的元素构造出新的矢量场并证明新的矢量场就是旧的矢量场,意味着值域的每个元素都有对应
-    $$ \bar{B}_g = L_{g*}\bar{A}_e = \bar{A}_{ge} = \bar{A}_g $$
-
-
-
-\chapter{李代数}
-在矢量空间 $\mathscr{V}$ 上定义映射 $\mathscr{V}\times \mathscr{V}\rightarrow \mathscr{V}$ 就得到一种 代数.一种重要的乘法是 李括号(Lie bracket), 记作 $[,]$, 是满足下列条件的双线性映射.
-\begin{enumerate}
-    \item $[A,B]= -[B,A]$
-    \item $[A,[B,C]] + [C,[A,B]]+[B,[C,A]] =0,\quad \forall A,B,C\in\mathscr{V}$,又称为 雅可比恒等式
-\end{enumerate}
-\begin{definition}{}{李代数}
-    定义了李括号的矢量空间称为 李代数(Lie algebra).任意两个元素的李括号都为零的李代数称为 阿贝尔李代数
-\end{definition}
-\begin{theorem}{}{左不变矢量场和李代数关系}
-     $G$ 上全体左不变矢量场的集合 $\mathscr{L}$ 是李代数
-\end{theorem}
-证明： 以矢量场对易子为李括号.
-首先验证 $[\bar{A},\bar{B}]$ 是左不变的
-    $$ L_{g*}[\bar{A},\bar{B}] \stackrel{1}{=} [L_{g*}\bar{A}, L_{g*}\bar{B}] = [\bar{A},\bar{B}]$$
-    第一步证明
-    令$\phi_* = L_{g*}$ 
-    则$$\phi_*[v,u](f) = [v,u](\phi^*f) = v(u(\phi^*f)) - u(v(\phi^*f))$$
-    而\begin{align*}
-        [\phi_*v,\phi_*u](f) &= \phi_*v(\phi_*u(f)) - \phi_*u(\phi_*v(f))\\
-        &= \phi_*(vu)(f) - \phi_*(uv)(f) \\
-        &=(vu)(\phi^*f) - uv(\phi^*f) \\
-        &=v(u(\phi^*f)) - u(v(\phi^*f))
-    \end{align*}
-    所以第一个等号成立.
-    对易子的反称性确保了李括号的第一个条件
-    第二个条件:
-    \begin{align*}
-        &[[u,v],w] + [[w,u],v]+[[v,w],u]\\
-       =&[uv-vu,w] + [wu-uw,v]+[vw-wv,u]\\
-       =&(uv-vu)w-w(uv-vu) + (wu-uw)v-v(wu-uw)+(vw-wv)u-u(vw-wv)\\
-       =&uvw-vuw-wuv+wvu +wuv - uvw -vwu+vuw + vwu-wvu -uvw+uwv\\ 
-       =&uvw-uvw+vuw-vuw+wuv-wuv+wvu-wvu-vwu+vwu-uvw+uwv\\ 
-       =&0
-    \end{align*}
-    第二个条件也满足.
-    结合定理\ref{thm:切空间与恒等元同构定理}和定理\ref{thm:左不变矢量场和李代数关系},可见恒等元的切空间与李代数同构.
-\begin{definition}{}{李代数同态同构}
-    设 $\mathscr{V}$ 和 $\mathscr{W}$ 是李代数.线性映射 $\beta : \mathscr{V}\rightarrow\mathscr{W}$ 称为 李代数同态,若它保李括号,即 $\beta([A,B]) = [\beta(A),\beta(B)]$.同态再称为 李代数同构,若 $\beta$ 是一一到上的.
-\end{definition}
-\begin{theorem}
-    设 $\mathscr{G}$ 和 $\hat{\mathscr{G}}$ 分别是李群 $G$ 和 $\hat{G}$ 的李代数,$\rho:G\rightarrow\hat{G}$ 是同态映射,则 $\rho$ 在点 $e\in G$ 诱导的推前映射 $\rho_*:\mathscr{G}\rightarrow\hat{\mathscr{G}}$ 是李代数同态.
-\end{theorem}
-\begin{definition}
-    李代数 $\mathscr{G}$ 的子空间 $\mathscr{H}$ 称为 $\mathscr{G}$ 的  李子代数(Lie subalgebra), 若
-    $$ [A, B]\in\mathscr{H},\quad \forall A, B \in \mathscr{H} $$
-\end{definition}
-\begin{theorem}{}{G-3-3}
-    设 $H$ 是李群 $G$ 的李子群,则 $H$ 的李代数 $\mathscr{H}$ 是 $\mathscr{G}$ 的李子代数.
-\end{theorem}
-begin{definition}{}{理想}	李代数 $\mathscr{G}$ 的子代数 $\mathscr{H}$ 称为 理想(ideal),若	$$ [A,\mu] \in \mathscr{H},\forall  A\in\mathscr{G},\mu \in \mathscr{H} $$
-end{definition}
-begin{theorem}{}	设 $\mathscr{H}\subset\mathscr{G}$ 是理想,$\mathscr{G}/\mathscr{H}$ 代表以等价类为元素的集合（$A,B\in \mathscr{G}$ 叫等价的,若 $A-B\in\mathscr{H}$）, 则 $\mathscr{G}/\mathscr{H}$ 是李代数,称作 商李代数（quotient Lie algebra）.
-end{theorem}
-\begin{definition}
-    李代数 $  \mathscr{G}  $ 称为 单(simple)李代数, 若它不是阿贝尔代数而且除 $\mathscr{G}  $ 及 $  \{0\}$ 外不含理想. $ \mathscr{G}$ 称为半单 (semi-simple)李代数, 若它不含非零的阿贝尔理想. 相应地, 李群 $  G  $ 称为单李群, 若它不是阿贝尔群而且除 $  G  $ 外不含正规子群. $ G  $ 称为半单李群, 若它不含阿贝尔正规子群.
-\end{definition}
-
 
 
 \chapter{单参子群和指数映射}
