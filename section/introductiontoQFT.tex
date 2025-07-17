@@ -221,7 +221,6 @@
     \begin{eqnarray}
         T^{\mu}_{\nu,\mu} = \frac{\partial T^{\mu}_{\nu}}{\partial x^{\mu}} = 0 % \qquad \sigma = 0,1,2,3
     \end{eqnarray}
-    若带入$\sigma = 0$，我们有：
 \end{example}
 \begin{definition}{能动张量}
     在电动力学里我们有，电荷密度和电流密度可以构成一个四维矢量，那么自然联想动量密度(矢量)和动量流密度(张量)是不是也可以组成一个张量$T^{\alpha \beta}$。
@@ -265,8 +264,17 @@
     \begin{equation}
         \partial_{\alpha} T^{\alpha\beta} = 0
     \end{equation}
+    \begin{note}
+        根据该定义我们可以方便地给出自旋的定义，详见Weinberg引力与宇宙学。(待补充)
+    \end{note}
 \section{谐振子视角下的K-G场}
+省流：从经典场论出发，我们将经典标量场$\phi(\bm{x})$量子化，方法为将$\phi(\bm{x}),\pi(\bm{x})$用符合二次量子化的算子语言重新表述。
 
+对照经典对易关系，我们写出场量对易关系：
+\begin{equation}
+    [\phi(\bm{x}), \pi(\bm{y})] = \delta^3(\bm{x} - \bm{y});[\phi(\bm{x}), \phi(\bm{y})] = [\pi(\bm{x}), \pi(\bm{y})] = 0
+\end{equation}
+作为$\phi$和$\pi$的函数，哈密顿量$H$也成为了算符。我们下个任务就是寻找其本征谱。我们尝试构造动量p空间下的K-G方程，即在傅里叶空间写出Klein-Gordon方程：
 
 \section{四维时空中的K-G场理论}
 \label{ch:1.4}
