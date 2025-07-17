@@ -215,8 +215,56 @@
             cg_{3} & T^{31} & T^{32} & T^{33}
         \end{pmatrix}
     \end{equation}
-    其中$\omega$表征体系能量密度，$S_i$表征体系能流密度。
+    其中$\omega$表征体系能量密度，$S_i$表征体系能流密度，$g_i$为体系动量流密度，$T^{11}$为应力张量。
+
+    同理我们带入守恒流方程\eqref{eq:1.18}，我们有
+    \begin{eqnarray}
+        T^{\mu}_{\nu,\mu} = \frac{\partial T^{\mu}_{\nu}}{\partial x^{\mu}} = 0 % \qquad \sigma = 0,1,2,3
+    \end{eqnarray}
+    若带入$\sigma = 0$，我们有：
 \end{example}
+\begin{definition}{能动张量}
+    在电动力学里我们有，电荷密度和电流密度可以构成一个四维矢量，那么自然联想动量密度(矢量)和动量流密度(张量)是不是也可以组成一个张量$T^{\alpha \beta}$。
+
+    在Winberg的引力与宇宙学中，能动张量的引入如下：
+
+    考虑一组由n标记的粒子，其能动四维矢量为$p_{n}^{\alpha}(t)$，$p^{\alpha}$的密度定义为
+    \begin{equation}
+        T^{\alpha 0}(\bm{x},t) = \sum_{n} p_n^{\alpha}(t)\delta^3(\bm{x}_0 - \bm{x}_n(t)) 
+    \end{equation}
+    类比电荷密度$ \mathcal{J}^0 = \sum_{n} e_n \delta^3(\bm{x}_0 - \bm{x}_n(t)) $与电流密度$ \mathcal{J}^i = \sum_{n} e_n \delta^3(\bm{x}_0 - \bm{x}_n(t)) \,\frac{d\bm{x}^{i}_n(t)}{dt} $，我们写出
+    \begin{equation}
+        T^{\alpha i}(\bm{x},t) = \sum_{n} p_n^{\alpha}(t)\delta^3(\bm{x}_0 - \bm{x}_n(t)) \,\frac{d\bm{x}^{i}_n(t)}{dt} \label{eq:1.27}
+    \end{equation}
+    两式统一为：
+    \begin{equation}
+        T^{\alpha \beta}(x) = \sum_{n} p_n^{\alpha}\delta^3(\bm{x}_0 - \bm{x}_n(t)) \,\frac{d\bm{x}^{\beta}_n(t)}{dt}
+    \end{equation}
+    在特定的单位制下，我们有$\bm{v} = \frac{\bm{p}}{E}$，也即$ p_n^{\alpha} = E_n \frac{dx^{\alpha}}{dt} $，带入得到：
+    \begin{equation}
+        T^{\alpha \beta}(x) = \sum_{n} \frac{p^{\alpha}_n p^{\beta}_n}{E_n} \, \delta^3(\bm{x}_0 - \bm{x}_n(t))
+    \end{equation}
+    从中我们可以看出$T^{\alpha \beta}$是对称张量。改写上式为更加对称的形式(变$\delta^3$为$\delta^4$)：
+    \begin{equation}
+        T^{\alpha \beta}(x) = \sum_{n} \int d\tau \, p_n^{\alpha} \frac{dx_n^{\beta}}{d\tau} \delta^4(x - x_n(\tau))
+    \end{equation}
+    其中每个量都是四维矢量，具有洛伦兹不变性，于是$T^{\alpha \beta}$也具有洛伦兹不变性。
+\end{definition}
+    观察式子\eqref{eq:1.27}，我们写出：
+    \begin{align}
+        \partial_{i} T^{\alpha i} = & \sum_{n} p_n^{\alpha}(t)\, \frac{\partial}{\partial x_{n}^{i}}\,\frac{d\bm{x}^{i}_n(t)}{dt} \delta^3(\bm{x}_0 - \bm{x}_n(t)) \notag \\
+                                  = & -\sum_{n} p_n^{\alpha}(t)\,\frac{\partial}{\partial t} \delta^3(\bm{x}_0 - \bm{x}_n(t)) \notag \\
+                                  = & -\frac{\partial}{\partial t} \sum_{n} p_n^{\alpha}(t)\delta^3(\bm{x}_0 - \bm{x}_n(t)) + \sum_{n} \frac{\partial p_n^{\alpha}(t)}{\partial t}\delta^3(\bm{x}_0 - \bm{x}_n(t)) \notag \\
+                                  = & -T^{0\alpha} + \sum_{n} \frac{\partial p_n^{\alpha}(t)}{\partial t}\delta^3(\bm{x}_0 - \bm{x}_n(t)) 
+    \end{align}
+    简单移项后令$\sum_{n} \frac{\partial p_n^{\alpha}(t)}{\partial t}\delta^3(\bm{x}_0 - \bm{x}_n(t)) = G^{\alpha}$为\textbf{力密度}，我们写出：
+    \begin{equation}
+        \partial_{\alpha} T^{\alpha\beta} = G^{\alpha}
+    \end{equation}
+    由于动量守恒，$p_n^{\alpha}$为不随时间变换的常数，我们得到守恒方程：
+    \begin{equation}
+        \partial_{\alpha} T^{\alpha\beta} = 0
+    \end{equation}
 \section{谐振子视角下的K-G场}
 
 
