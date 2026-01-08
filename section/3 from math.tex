@@ -1,0 +1,97 @@
+% !TEX program = xelatex
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\hypersetup{pageanchor=true}
+%add preface chapter here if needed
+
+\chapter{Action principle (principle of least action)}
+We note the action as \(S[\phi(t)] \).
+We define the action as the integral of the Lagrangian over the path of the particle,for an example,
+\begin{example}
+Consider a particle of mass \(m\) moving in a potential \(V(x)\). The Lagrangian is given by \(L = T - V = \frac{1}{2} m \dot{x}^2 - V(x)\), 
+where \(T\) is the kinetic energy and \(V\) is the potential energy. The action for a 1-dim path \(\phi(t)\) from time \(t_1\) to \(t_2\) is then given by
+\(S[\phi(t)] = \int_{t_1}^{t_2} L[\phi(t),\dot{\phi}(t)] dt = \int_{t_1}^{t_2} dt {\frac{1}{2} m \dot{x}^2 - V(x)}  \).
+\end{example}
+
+\section{How to implement the principle of least action (or variational principle)}
+For an ordinary function \(f(x)\), we know that at the extremum point, the first derivative is zero, i.e., \(f'(x) = 0\),minimizing \(f(x)\) 
+means\(f'(x) = 0\) and \(f''(x) > 0\).
+Then what about the functional \(S[x(t)]\)?
+    \subsection{Euler's approach(direct method)}
+        First we note that the action \(S[x(t)]\) is a functional of \(x(t)\), i.e., \(S[x(t)]\) depends on \( t,x,\dot{x} \).
+        \begin{lemma}{Ostrogradsky's theorem}
+            Higher order derivatives of \(S[x(t)]\) with respect to \(x^{(n)}(t)\) are proved to be Unstable.
+            To be added.
+        \end{lemma}
+        Euler approximate a general curve by small straight line(ploygon) segments(\(x_i\)),then the variation of the action can be expressed as
+        \[
+            \Delta S[\phi(t)] = \lim_{n \to \infty} \left[ S[\phi(t)] - S[\phi(t_1),\phi(t_2),\dots,\phi(t_n)] \right]
+        \]
+        where \(t_0,t_1,\dots,t_n\) are the \(n\) points that divide the interval \([t_1,t_2]\) into \(n\) equal parts.
+        i.e., \( x_i = x(t_i) \), \( t_i = t_1 + i\Delta t\), with \(\Delta t = \frac{t_2 - t_1}{n}\).
+        Then we can approximate the action with a Riemann sum:
+        \begin{equation}
+            S[x(t)] \approx \bar{S} [x_i] = \sum_{i=1}^{n} L[t_i,x_i,\frac{x_i - x_{i-1}}{\Delta t}] \Delta t
+        \end{equation}
+        then 
+        \begin{equation}
+            \frac{\partial \bar{S}}{\partial x_i} = \left. \frac{\partial L}{\partial x_i} \right|_{i} \Delta t + \left. \frac{\partial L}{\partial \dot{x}_i} \right|_{i} - \left. \frac{\partial L}{\partial \dot{x}_{i-1}} \right|_{i-1}
+        \end{equation}
+        Then he takes limit \(n \to \infty\), i.e., \(\Delta t \to 0\) while looking on \( \frac{\partial S}{\partial x} = 0 \)both parts go 0,
+        \( \frac{\partial S}{\partial x} \propto o(\Delta t)\) automatically holds.
+        Therefore he only consider \( \frac{\partial \bar{S} [x_i]}{\partial x_i} / \Delta t \).
+        \begin{align}
+            \frac{\partial \bar{S} [x_i]}{\partial x_i} / \Delta t = & L(t_i,x_i,\frac{x_i - x_{i-1}}{\Delta t}) + L_{\dot{x_i}}(t_i,x_i,\frac{x_i - x_{i-1}}{\Delta t}) \notag \\ 
+                                                        \coloneqq & \frac{\delta \bar{S}}{\delta x(t)}
+        \end{align}
+        This is called the functional derivative/or variation of \(S[x(t)]\) with respect to \(x(t)\).
+    \subsection{Lagrange's method}
+        Consider a small variation of the path \(x(t)\) by adding a small function \( h(t)\) ，namely $x(t) \to x(t) + h(t)$ with \(h(t) \) to be "small".
+
+        Consider two small variations of the path \(x(t)\) 
+        \begin{itemize}
+            \item [a.] tha variation in both the strong and weak norm, i.e., \( |h| \to 0 \quad \& \quad |h'| \to 0 \)
+            \item [b.] the variation only in the weak norm only, i.e., \( |h| \to 0 \)
+        \end{itemize}
+        Lagrange assusmes that $ h(t) = \epsilon \eta(t) $ with \(\epsilon\) to be "small" and \(\eta(t)\) is an arbitrary function that vanishes at the endpoints, i.e., \(\eta(t_1) = \eta(t_2) = 0\).
+        This seems natural and "innocent", but actually it forces $ \dot{h}(t) = \epsilon \dot{\eta}(t) $to be "small" as well.
+        So the strong norm variations are excluded here.
+         
+        Then $S[x(t) + \epsilon \eta(t)] \coloneqq S[x(t)] + \epsilon^1\delta S[x(t),h(t)] + \epsilon^2\delta^2 S[x(t),h(t)] + o(\epsilon^3) $
+        it requires that $ \frac{\delta S[x(t),h(t)]}{\delta \epsilon} = 0 = \delta_1 S[x(t),h(t)] $.
+
+        Let's consider$\delta_1 S$,
+        \begin{align}
+            S[x(t)+\epsilon \eta] &= \int_{t_0}^{t_{fin}} dt L[x(t)+\epsilon \eta(t),\dot{x}(t)+\epsilon \dot{\eta}(t)]  \notag \\
+                                  &= \int_{t_0}^{t_{fin}} dt \left\{ L[x(t),\dot{x}(t)] + \epsilon\eta L_x + \epsilon\dot{\eta}L_{\dot{x}}(t) +o(\epsilon^2) \right\} \notag \\
+                                  &= S[x(t)] + \epsilon \int_{t_1}^{t_2} dt \left( \eta L_x + \dot{\eta} L_{\dot{x}} \right) \eta(t) \notag \\
+                                  &= S[x(t)] + \epsilon \left. \left( \eta L_x \right)\right|_{t_0}^{t_{fin}} + \epsilon \int_{t_0}^{t_{fin}} dt \, \eta(t) \left( L_x - \frac{d}{dt} L_{\dot{x}} \right)
+        \end{align}
+        so we have 
+        \begin{equation}
+            \delta_1 S[x(t),h(t)] = \left. \eta L_x\right|_{t_0}^{t_{fin}} + \int_{t_0}^{t_{fin}} dt \, \eta(t) \left( L_x - \frac{d}{dt} L_{\dot{x}} \right)
+        \end{equation}.
+        
+        EOM requires that \( \delta_1 S[x(t),h(t)] = 0 \) for arbitrary \(\eta(t)\) that vanishes at the endpoints, so the boundary term vanishes.
+
+        Here we see ,it's natural to impose boundary conditions in time $\eta(t_0) = \eta(t_{fin}) = 0$.The same as in Euler's direct approach,this is called the Euler-Lagrange equation.
+
+        Here the function derivative $ \frac{\delta S}{x(t)} $is defined as the coefficient of $ \eta(t)dt $ inside the integral,the dt part "explains" 
+        why Euler's direct method needs to divide by \( \Delta t \) to get the functional derivative.
+    \subsection{examples}
+        \begin{equation}
+            L = \frac{1}{2} \sum_i \dot{x}^i \dot{x}_i - V(\sqrt{x^i x_i})
+        \end{equation}
+        It has rotation symmetry, i.e., \( \Lambda^i{}_{j} x^i x^j = 0 \) is invariant under \(x^i \to x^i + \Lambda^i{}_j x^j\).If we consider an infinitesimal rotation,
+        \begin{equation}
+            y^i = \Lambda^i{}_{j} \dot{x}^i \dot{x}_j = (\delta^i{}_j + \epsilon^i{}_j)
+        \end{equation}
+        Since 
+        \begin{equation}
+            y^i y^j =  \Lambda^i{}_{k} \Lambda^j{}_{l} x^k x^l = x^i x^j + (\epsilon^i{}_k x^k x^j + \epsilon^j{}_l x^i x^l) + O(\epsilon^2) = x^i x^j
+        \end{equation}
+        we have \( \epsilon_{ij} = - \epsilon_{ji} \).
+        Then the variation of the action is
+
+\end{document}

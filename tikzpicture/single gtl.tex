@@ -1,31 +1,28 @@
 
 \documentclass[tikz,border=3mm]{standalone}
+\usepackage{amsfonts}
 \begin{document}
 \begin{tikzpicture}[font=\small]
 
 % 坐标轴
-% \draw[thick,->] (-0.5,-2.5) -- (-0.5,2.5) node[left] {$\mathbb{R}$};
-\draw[thick] (-4,0) -- (4,0);
-
-% 第一组椭圆及内容
-\draw[thick] (-2,0) ellipse (1.2cm and 2cm) node[right=0.5cm, below=1.2cm] {$G$};
-\draw[->] (-2,-1.3) -- (-2,-0.3) node[midway, left] {$e$};
-\draw[thick] (-0.5,0) .. controls (-1,1) and (-1.5,1.5) .. (-2,2) node[pos=0.5, below] {$\gamma$};
-\fill (-0.5,0) circle (2pt) node[below right] {$t$};
-\fill (-2,1.3) circle (2pt) node[right] {$\gamma(t)$};
-
-% 第二组椭圆及内容
-\draw[thick] (2,0) ellipse (1.2cm and 2cm) node[right=0.5cm, below=1.2cm] {$M$};
-\fill (2,1.3) circle (2pt) node[right] {$P$};
-\draw[->] (2,-1.3) -- (2,-0.3) node[midway, right] {$\xi_P$};
-
-% 椭圆之间的映射关系
-\draw[->] (-1,1.8) .. controls (0,2) and (1,1.5) .. (1.8,1.3)
-    node[midway, above] {$\sigma_P$};
-\draw[->] (-2.4,1.5) .. controls (-3,2) and (-1,2.5) .. (-0.5,2.5) node[midway, above] {$A$};
-
-% 等式标记
-\node at (1.2,0.8) {$\sigma_P(\gamma(t)) = \sigma_\nu(P)$};
+\draw[thick,->] (0,-0.5) -- (0,2.5) node[left] {$x$};
+\draw[thick,->] (-0.5,0) -- (4,0) node[right] {$t$};
+% \draw[thick] (-4,0) -- (4,0);
+    
+    % 标记关键点
+    \fill (0,0) circle (1pt) node[above right] {$x_0$};
+    \fill (0.8,0.2) circle (1pt) node[above right] {$x_1$};
+    \fill (1.5,-0.5) circle (1pt) node[below right] {$x_2$};
+    \fill (2.2,-2) circle (1pt) node[below right] {$x_3$};
+    
+    % 绘制函数曲线（模拟周期性波动）
+    \draw[thick, smooth, tension=0.5] 
+        (-1, 0) .. controls (0, 0) and (-1, -1) .. (0, 0)
+        .. controls (0.5, 0.2) and (1, -0.5) .. (1.5, -0.5)
+        .. controls (2, -1.5) and (2.5, -2) .. (3, -3);
+    
+    % 辅助虚线
+    \draw[dashed] (1.5,0) -- (1.5,-0.5);
 
 \end{tikzpicture}
 \end{document}

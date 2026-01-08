@@ -8,16 +8,14 @@
 \contentsline {subsection}{\numberline {1.2.3}Noether's Theory}{5}{subsection.1.2.3}%
 \contentsline {section}{\numberline {1.3}谐振子视角下的K-G场}{8}{section.1.3}%
 \contentsline {section}{\numberline {1.4}四维时空中的K-G场理论}{8}{section.1.4}%
-\contentsline {chapter}{\numberline {第二章}单参子群和指数映射}{9}{chapter.2}%
-\contentsline {chapter}{\numberline {第三章}常用李群及其李代数}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1}GL(m)群(一般线性群,general linear group)}{11}{section.3.1}%
-\contentsline {section}{\numberline {3.2}O(m)群(正交群,orthohonal group)}{12}{section.3.2}%
-\contentsline {section}{\numberline {3.3}O(1,3)群(洛伦兹群,The Lorentz group)}{14}{section.3.3}%
-\contentsline {section}{\numberline {3.4}U(m)群(酉群,Unitary group)}{17}{section.3.4}%
-\contentsline {section}{\numberline {3.5}E(m)群(欧氏群)}{21}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Poincar\'{e}群(庞加莱群)}{22}{section.3.6}%
-\contentsline {chapter}{\numberline {第四章}李代数的结构常数}{24}{chapter.4}%
-\contentsline {chapter}{\numberline {第五章}李变换群和killing矢量场}{31}{chapter.5}%
-\contentsline {chapter}{\numberline {第六章}伴随表示和killing型}{37}{chapter.6}%
-\contentsline {section}{\numberline {6.1}伴随表示}{37}{section.6.1}%
-\contentsline {section}{\numberline {6.2}killing型}{40}{section.6.2}%
+\contentsline {subsection}{\numberline {1.4.1}K-G场的量子化}{8}{subsection.1.4.1}%
+\contentsline {section}{\numberline {1.5}小结}{8}{section.1.5}%
+\contentsline {part}{第二部分\hspace {1em}课堂笔记}{10}{part.2}%
+\contentsline {chapter}{\numberline {第二章}Spin-0 Quantum Field}{11}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Klein-Gorden Field}{11}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}振幅计算}{11}{subsection.2.1.1}%
+\contentsline {chapter}{\numberline {第三章}Action principle (principle of least action)}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}How to implement the principle of least action (or variational principle)}{12}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Euler's approach(direct method)}{12}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Lagrange's method}{12}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}examples}{13}{subsection.3.1.3}%

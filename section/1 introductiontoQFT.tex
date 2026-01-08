@@ -1,0 +1,315 @@
+% !TEX program = xelatex
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\hypersetup{pageanchor=true}
+%add preface chapter here if needed
+
+\chapter{Klein-Gorden Field}
+\section{从量子力学到量子场论}
+从量子力学到量子场论，我们首先要问的是为什么我们不能直接对粒子进行量子化(就像量子化非相对论粒子)。省流：解释了单粒子相对论性波动方程的负能态与负概率，同时
+对于多粒子态的因果性和不同数目粒子态间的转换。
+
+\subsection{振幅计算}
+    考虑一个自由粒子从$x_0$处传播到$x$的过程。我们可以用路径积分的方法来计算这个过程的振幅。
+
+    首先考虑非相对论情况：
+    \begin{align}
+        U(t) = & \Bra{\bm{x}}  e^{-i\frac{\bm{p}^2}{2m}t}  \Ket{\bm{x_0}} \notag \\
+             = & \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^3} \Bra{\bm{x}} e^{-i\frac{\bm{p}^2}{2m}t} \Ket{\bm{p}} \Braket{\bm{p} }{\bm{x_0}} \notag \\
+             = & \frac{1}{(2\pi)^3} \int d^3p e^{-i\frac{\bm{p}^2}{2m}t} e^{\bm{p \cdot (x-x_0) }} \notag \\
+             = & \frac{1}{(2\pi)^3} \int dp_x e^{-i\frac{p_x^2}{2m}t + i p_x(x-x_0)} \cdot \int dp_x e^{-i\frac{p_y^2}{2m}t + i p_y(y-y_0)} \cdot \int dp_x e^{-i\frac{p_z^2}{2m}t + i p_z(z-z_0)} \notag \\
+             = & \frac{1}{(2\pi)^3} \left[ \sqrt{ \frac{ 2m\pi}{ it}} \right]^3 e^{i\frac{m(x-x_0)^2}{2t}} \cdot e^{i\frac{m(y-y_0)^2}{2t}} \cdot e^{i\frac{m(z-z_0)^2}{2t}} \notag \\
+             = & \left( \frac{m}{2\pi it} \right)^{\frac{3}{2}} \cdot e^{i \frac{m}{2t} (\bm{x-x_0})}
+    \end{align}
+    式中积分利用结论
+    \begin{equation}
+        \int_{-\infty}^{\infty} e^{-i(ax^2 + bx)} dx = \sqrt{\frac{\pi}{ia}}e^{i\frac{b^3}{4a}}
+    \end{equation}
+    for all $x$ and $t$ ,$U(t) \neq 0 \Rightarrow $ 可在任意短时间内传播任意长距离
+
+    利用狭相能量-动量关系式$E = \sqrt{p^2 + m^2}$代换上式中$E$：
+    \begin{equation}
+        \begin{aligned}
+        U(t) = & \Bra{\bm{x}}  e^{-i\sqrt{\bm{p}^2 + m^2}t}  \Ket{\bm{x_0}} \notag \\
+             = & \int_{-\infty}^{\infty} \frac{d^3p}{(2\pi)^3} \, e^{ -i\sqrt{\bm{p}^2 + m^2} t} \cdot e^{i\bm{p\cdot r}} \notag \\
+    \overset{\text{球坐标系下}}{=} & \frac{1}{(2\pi)^3} \int dp \, d\theta \, d\phi \, \sin(\theta) p^2 e^{-i\sqrt{\bm{p}^2 + m^2} t} e^{ipa \cos(\theta)} \notag \\
+                = & \frac{1}{(2\pi)^2} \int_{0}^{\infty} p^2 \, e^{-i\sqrt{\bm{p}^2 + m^2} t} \, \int_{0}^{\pi} d\theta \, \sin(\theta) e^{ipa \cos(\theta)} 
+        \end{aligned} \label{eq:1.3}
+    \end{equation}
+    其中:
+    \begin{align*}
+        \int_{0}^{\pi} \sin(\theta) \, e^{ipr \cos(\theta)} \,d\theta = & \frac{-1}{ipr} e^{ipr\cos(\theta)}|_{0}^{\pi} \notag \\
+                                                                      = & \frac{1}{ipr} \left( e^{ipr}-e^{-ipr} \right) \notag \\
+                                                                      = & \frac{2}{pr} \sin(pr) 
+    \end{align*}
+    \begin{lemma}{第二类修正贝塞尔函数(modified Bessel function of the second kind)$K_{\mu}(x)$}
+        这是贝塞尔函数的一种，通常用于解决涉及柱对称问题的微分方程，常见于物理学中的波动、热传导和量子力学等领域。修正贝塞尔函数满足修正贝塞尔方程：
+        \begin{equation}
+            x^2\frac{d^2y}{dx^2} + x\frac{dy}{dx} -(x^2+\mu^2)y = 0
+        \end{equation}
+        其中$\mu$是函数的阶数，$x$是自变量，其在自变量$x>0$时为实数，$x\approx \infty$时指数衰减($ x\gg 1$时$K_2(x)\approx \sqrt{\frac{\pi}{2x}}e^{-x}$)。特别的对于阶数为2的第二类修正贝塞尔函数$K_2(x)$，我们有递推关系：
+        \begin{equation}
+            K_2(x) = K_0 + \frac{2}{x} K_1(x)
+        \end{equation}
+        经过系列推导可得：(待补充)
+        \begin{equation}
+            \int_{0}^{\infty} xe^{-\beta \sqrt{\gamma^2 +x^2}} \sin(bx)\,dx = \frac{b\beta \gamma^2}{\beta^2 + b^2} K_2(\gamma\sqrt{\beta^2+b^2})
+        \end{equation}
+        
+    \end{lemma}
+    那么\eqref{eq:1.3} 又等于
+    \begin{align}
+        U(t) = & \frac{1}{(2\pi)^2} \int_{0}^{\infty} p^2 \, e^{-i\sqrt{\bm{p}^2 + m^2} t} \, \int_{0}^{\pi} d\theta\,\sin(\theta) e^{ipa \cos(\theta)} \notag \\
+             = & \frac{1}{2\pi^2r} \int_{0}^{\infty} dp \, p\,\sin(p\left| \bm{x-x_0} \right|) e^{-it\sqrt{p^2+m^2}} \notag \\
+             = & \frac{1}{2\pi^2r} \cdot \frac{ritm^2}{-t^2+r^2}K_2(m\sqrt{r^2-t^2})
+    \end{align}
+    由引理1.1我们有：$r^2 \gg t^2$时(光锥之外)，
+    \begin{equation}
+        U(t) = \frac{1}{w\pi^2} \cdot \frac{im^2t}{r^2-t^2} \cdot \sqrt{\frac{\pi}{2} \, \frac{1}{m\sqrt{r^2-t^2}}} \cdot e^{-m\sqrt{r^2}-t^2}
+    \end{equation}
+    尽管这个值很小但是同样不为0，因果性同样违背。
+
+    而在量子场论中，一个粒子从$x_0$处传播到$x$处和反粒子从$x$传播到$x_0$处无法区分，因此散射振幅叠加后相消。(详见\ref{ch:1.4})
+\section{经典场论}
+以下式子仅考虑单粒子态(故只需一个$\phi$描述)
+\subsection{Lagrangian Field Theory}
+    区别于理论力学中的Lagrangian Mechanics，场论中将时间t与空间坐标$q_i$平权，重写作用量S:
+    \begin{equation}
+        S = \int L\,dt = \int \mathcal{L} (\phi,\partial_{\mu}\phi)d^4x
+    \end{equation}
+    其中$\mathcal{L}$称经典场$\phi(\bm{x})$的拉格朗日密度，同理由最小作用量原理：
+   \begin{align}
+        0 = & \delta S \notag \\
+          = & \int d^4x\,\left\{ \frac{\partial\mathcal{L}}{\partial \phi}\delta \phi + \frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\phi)}\delta(\partial_{\mu}\phi) \right\} \notag \\
+          = & \int d^4x\,\left\{ \frac{\partial\mathcal{L}}{\partial \phi}\delta \phi + \partial_{\mu}\left( \frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)}\delta\phi \right) - \partial_{\mu}\left( \frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)} \right)\delta\phi \right\}
+    \end{align}
+    第二项积分在四维时空的边界上，由于初始条件$\delta\phi = 0$在边界是给定的，这一项积分结果为0。又由于剩余积分项中$\delta\phi = 0$的任意性，由此要求大括号里为0，即：
+    \begin{equation}
+        \partial_{\mu}\left( \frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)} \right) - \frac{\partial\mathcal{L}}{\partial\phi} = 0
+    \end{equation}
+\subsection{Hamitonian Field Theory}
+    场论的拉格朗日公式特别适用于相对论动力学,因为所有的表达式都是显式的洛伦兹不变的。尽管如此，Peskin在本书的第一部分中任使用哈密顿公式，因为这将使得过渡到量子力学更容易。在Hamitonian Mechanics中，我们通过勒让德变换将每一广义坐标$q_i$与广义动量
+    $p_i \equiv \frac{\partial L}{\partial\dot{q_i}}$耦合，类似的在场论中：
+    \begin{align}
+        p(\bm{x}) \equiv & \frac{\partial L}{\partial \dot(\phi)(\bm{x})} = \frac{\partial}{\partial \dot(\phi)(\bm{x})} \int \mathcal{L}(\phi(\bm{y}),\dot{\phi(\bm{y})})\,d^3y \notag \\
+\overset{\text{离散化}}{\sim} & \frac{\partial}{\partial \dot{\phi}(\bm{x})} \sum_{\bm{y}} \mathcal{L}( \phi(\bm{y}),\dot{\phi}(\bm{y}) )\,d^3y \notag \\
+                        = & \pi (\bm{x})\,d^3x
+    \end{align}
+    其中$ \pi (\bm{x}) = \frac{\partial\mathcal{L}}{\partial \dot{\phi}(\bm{x})} $称经典场$\phi(\bm{x})$的共轭动量密度。由此带入勒让德变换得到哈密顿量：
+    \begin{equation}
+        H = \sum_{\bm{x}} p{\bm{x}} \dot{\phi}(\bm{x})-L = \int d^3x\,\left[ \pi(\bm{x})\phi(\bm{x}) - \mathcal{L} \right] = \int d^3x\,\mathcal{H}
+    \end{equation}
+    上式由离散谱过渡到连续谱，其中$\mathcal{H}$称哈密顿量密度。
+    \begin{example}
+        以标量场$\phi(x)$为例，将$\phi(x)$视作广义坐标，按L=T-V的形式构建拉氏量：
+        \begin{equation}
+            \mathcal{L} = \frac{1}{2} \dot{\phi} - \frac{1}{2}(\nabla\phi)^2 - \frac{1}{2}m^2\phi^2 = \frac{1}{2}(\partial_{\mu}\phi)^2-\frac{1}{2}m^2\phi^2 = \frac{1}{2}\partial_{\mu}\phi\,\partial^{\nu}\phi\cdot\eta_{\mu\nu}-\frac{1}{2}m^2\phi^2
+        \end{equation}
+        上式使用西海岸度规(+,-,-,-)。带入E-L方程1.11式，我们得到:
+        \begin{equation}
+            \left( \frac{\partial^2}{\partial t^2}-\nabla^2+m^2 \right)\phi = 0 = \left( \partial_{\mu}\partial^{\mu} +m^2 \right)\phi
+        \end{equation}
+        这就是我们熟知的K-G方程(但是在当前的语境下，这个场还是经典场，并未量子化)。进一步我们得到哈密顿量：
+        \begin{equation}
+            H = \int d^3x \, \mathcal{H} = \int d^3x\,\left[ \frac{1}{2}\pi^2 + \frac{1}{2}(\nabla \phi)^2 + \frac{1}{2}m^2\phi^2 \right]
+        \end{equation}
+        我们可以认为三个项分别是，在场在时间中移动的能量，在空间切变的能量，以及场自量。在第2.3节和第2.4节中，我们将进一步研究哈密顿量。
+    \end{example}
+\subsection{Noether's Theory}
+    本节主要内容为探究经典场论中对称性与守恒律之间关系，可以证明，一种对称变换对应一种守恒量。在K-G场中，类比变分法对场进行一无穷小变换：
+    \begin{equation}
+        \phi(x) \rightarrow \phi'(x) = \phi(x) + \alpha \Delta \phi(x)
+    \end{equation}
+    其中$\alpha$是无穷小参量，$\Delta \phi$是场构型的变化。如果在此变化下，拉格朗日量仅仅改变一表面项，对应的作用量是不变化的。如此，导出的运动方程也不变化。即：
+    \begin{equation}
+        \mathcal{L}(x)\rightarrow \mathcal{L}' = \mathcal{L} + \alpha \Delta \mathcal{L} = \mathcal{L} + \alpha \partial_{\mu}
+    \end{equation}
+
+\begin{note}
+    初见这个变换形式会感觉极不自然，明明只需$\Delta \phi$足以描述场的变化量，为什么要多此一举添加一个无穷小参量$\alpha$。不加$\alpha$思路如下：
+    \begin{equation}
+         \begin{aligned}
+        \Delta \mathcal{L} = & \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)}\Delta \partial_{\mu}\phi + \frac{\partial \mathcal{L}}{\partial\phi}\Delta\phi \notag \\
+                           = & \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi \right) - \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \right)\Delta\phi + \frac{\partial \mathcal{L}}{\partial \phi}\Delta\phi \notag \\
+        \overset{\text{E-L}}{=}  & \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi \right)
+        \end{aligned}
+    \end{equation}
+   
+    类似理论力学的分析，作用量间相差一个关于时间和坐标的函数$f(x,t)$对时间的全导数$s' = s + \frac{d}{dt}f(x,t)$对E-L方程无影响。同理在此处作用量S变化一个表面项，对时空积分后得到一标量函数，不影响S的极值点(亦不影响E-L方程)。
+    \begin{equation}
+        \Delta \mathcal{L} = \partial_{\mu}\mathcal{J}^{\mu} = \partial_{\mu} \left( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi \right) = 0 \Rightarrow j^{\mu} = \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi -\mathcal{J}^{\mu} 
+        \label{eq:1.18}
+    \end{equation}
+    此即诺特流$j^{\mu}$。
+    
+    但是显然此处的$\alpha$并不止是个可以随意消去的常数，如果我们假定$\alpha= \alpha(\bm{x})$是局域的，则我们可以导出量子场论的规范不变性。
+    Ward恒等式（Ward identity），或更广义的Takahashi恒等式，是量子场论中规范对称性的直接结果。它表达了在量子层面，规范对称性所导致的守恒定律如何约束格林函数（关联函数）之间的关系。Ward恒等式对于证明规范理论的可重整性、保证散射振幅的规范不变性以及理解物理态的幺正性至关重要。
+    \begin{theorem}{Ward恒等式}
+        核心在于考虑积分测度的变化。
+    \end{theorem}
+
+\end{note}
+    推导过程就是上述1.19式加上系数$\alpha$。
+
+    守恒律也可以用守恒荷表示。将1.20改写
+    \begin{equation}
+        \partial_{\mu} j^{\mu} = \partial_t \rho +\overrightarrow{\nabla} \cdot \overrightarrow{j} = 0 
+    \end{equation}
+    借助电动力学里的经验我们我们将四维守恒流$j^{\mu}$拆解为时间项和空间项得到连续性方程的形式，进而类比电荷守恒律我们对全空间进行积分：
+    \begin{equation}
+        Q = \int_{all space} \partial_t \rho d^3x = \int j^0 d^3x = - \int \overrightarrow{j} \cdot \overrightarrow{dS}
+    \end{equation}
+\begin{example}
+    对于无质量K-G场Lagrangian密度为$\mathcal{L} = \frac{1}{2}(\partial_{\mu}\phi)^2 $，对场$\phi(x)$量进行平移操作$\phi\rightarrow\phi+\alpha$，引起Lagrangian变化为
+    $\mathcal{L}\rightarrow\mathcal{L}' = \frac{1}{2}\left( \partial_{\mu}(\phi + \alpha) \right)^2 = \frac{1}{2}(\partial_{\mu}\phi)^2 =\mathcal{L}$。若要写出
+    其诺特流，有$\mathcal{L}' = \mathcal{L} + \alpha \partial_{\mu}\mathcal{J}^{\mu} = \mathcal{L} \rightarrow \partial_{\mu}\mathcal{J}^{\mu} = 0$。对于最简单的情况
+    \begin{equation}
+        \mathcal{J}^{\mu} = 0 \label{eq:1.21}
+    \end{equation}
+    带入\eqref{eq:1.18}和$\mathcal{L} = \frac{1}{2}(\partial_{\mu}\phi)^2 $：$j^{\mu} = \frac{\partial \mathcal{L}}{\partial (\partial_{\mu}\phi)} \Delta\phi = \partial_{\mu} \phi \Delta \phi$，
+    而注意到
+    \begin{equation}
+        \phi \rightarrow \phi' = \phi + \alpha \Delta \phi = \phi + \alpha \Rightarrow \Delta \phi = 1 \notag
+    \end{equation}
+    于是有守恒流$j^{\mu} = \partial_{\mu}\phi$。
+\end{example}
+\begin{example}
+    若标量场为一复标量场，$\mathcal{L} = \left| \partial_{\mu}\phi \right| - m^2\left| \phi^2 \right| = (\partial_{\mu}\phi^*)(\partial^{\mu}\phi) - m^2 \phi^*\phi$，做U(1)变换:
+    \begin{equation}
+        \phi \rightarrow \phi' = \phi \, e^{i\alpha} \notag
+    \end{equation}
+    那么拉格朗日密度变为
+    \begin{equation}
+        \mathcal{L} \rightarrow \mathcal{L}' = \left| \partial_{\mu}\phi \right| - m^2\left| \phi^2 \right| = \mathcal{L} \notag
+    \end{equation}
+    且有：
+    \begin{equation}
+        \begin{cases}
+            \phi' = e^{i\alpha}\,\phi \approx \phi + i\alpha \phi = \phi + \alpha \Delta \phi \notag \\
+            \phi'^{*} = (e^{i\alpha} \phi)^* \approx \phi^* - i\alpha \phi^* = \phi^* + \alpha \Delta \phi^*  \\ 
+        \end{cases}
+    \end{equation}
+    同\eqref{eq:1.21}，我们有$\mathcal{J}^{\mu} = 0$。带回\eqref{eq:1.18}，我们有：
+    \begin{align}
+        j^{\mu} = & \frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\phi)} \Delta\phi + \frac{\partial \mathcal{L}}{\partial(\partial_{\mu}\phi^*)} \Delta\phi^* \notag \\
+                = & i \left[ (\partial^{\mu}\phi^*)\phi - \phi^*(\partial^{\mu} \phi) \right] 
+    \end{align}
+\end{example}
+\begin{example}{时空坐标平移与能动张量的引出。}
+
+    将4维时空坐标做无穷小平移$x'^{\mu} = x^{\mu} - a^{\mu}$，那么场量$\phi'(x) = \phi(x+a) \overset{\text{taylor ex}}{=} \phi(x) + a^{\mu}\partial_{\mu}\phi(X) $，同理，
+    $\mathcal{L}' = \mathcal{L} + a^{\mu}\partial_{\mu}\mathcal{L}(X) = \mathcal{L} + a^{\nu}\partial_{\mu}(\delta^{\mu}_{\nu}\mathcal{L}(X)) $。对比$\mathcal{L}' = \mathcal{L} + \alpha\partial_{\mu}\mathcal{J}^{\mu}$，
+    我们得到$\mathcal{J}^{\mu} = \delta^{\mu}_{\nu}$。注意到此时指标不守恒，因为我们忽略了$a^{\mu}$和$\alpha$的区别，将$a^{\mu}$各个分量单独拿出我们有广义守恒流
+    \begin{equation}
+        T^{\mu}_{\nu} = \frac{\partial\mathcal{L}}{\partial(\partial_{\mu}\phi)} \partial_{\nu}\phi + \delta^{\mu}_{\nu}\mathcal{L}
+    \end{equation}
+    此即体系能动张量。
+
+    对于四维闵氏时空，我们利用度规将指标降下：
+    \begin{equation}
+        T_{\mu\nu} = \eta_{\sigma \mu} T^{\sigma}_{\nu} = \begin{pmatrix}
+            \omega & \frac{S_1}{c} & \frac{S_2}{c} & \frac{S_3}{c} \\
+            cg_{1} & T^{11} & T^{12} & T^{13} \\
+            cg_{2} & T^{21} & T^{22} & T^{23} \\
+            cg_{3} & T^{31} & T^{32} & T^{33}
+        \end{pmatrix}
+    \end{equation}
+    其中$\omega$表征体系能量密度，$S_i$表征体系能流密度，$g_i$为体系动量流密度，$T^{11}$为应力张量。
+
+    同理我们带入守恒流方程\eqref{eq:1.18}，我们有
+    \begin{eqnarray}
+        T^{\mu}_{\nu,\mu} = \frac{\partial T^{\mu}_{\nu}}{\partial x^{\mu}} = 0 % \qquad \sigma = 0,1,2,3
+    \end{eqnarray}
+\end{example}
+\begin{definition}{能动张量}
+    在电动力学里我们有，电荷密度和电流密度可以构成一个四维矢量，那么自然联想动量密度(矢量)和动量流密度(张量)是不是也可以组成一个张量$T^{\alpha \beta}$。
+
+    在Winberg的引力与宇宙学中，能动张量的引入如下：
+
+    考虑一组由n标记的粒子，其能动四维矢量为$p_{n}^{\alpha}(t)$，$p^{\alpha}$的密度定义为
+    \begin{equation}
+        T^{\alpha 0}(\bm{x},t) = \sum_{n} p_n^{\alpha}(t)\delta^3(\bm{x}_0 - \bm{x}_n(t)) 
+    \end{equation}
+    类比电荷密度$ \mathcal{J}^0 = \sum_{n} e_n \delta^3(\bm{x}_0 - \bm{x}_n(t)) $与电流密度$ \mathcal{J}^i = \sum_{n} e_n \delta^3(\bm{x}_0 - \bm{x}_n(t)) \,\frac{d\bm{x}^{i}_n(t)}{dt} $，我们写出
+    \begin{equation}
+        T^{\alpha i}(\bm{x},t) = \sum_{n} p_n^{\alpha}(t)\delta^3(\bm{x}_0 - \bm{x}_n(t)) \,\frac{d\bm{x}^{i}_n(t)}{dt} \label{eq:1.27}
+    \end{equation}
+    两式统一为：
+    \begin{equation}
+        T^{\alpha \beta}(x) = \sum_{n} p_n^{\alpha}\delta^3(\bm{x}_0 - \bm{x}_n(t)) \,\frac{d\bm{x}^{\beta}_n(t)}{dt}
+    \end{equation}
+    在特定的单位制下，我们有$\bm{v} = \frac{\bm{p}}{E}$，也即$ p_n^{\alpha} = E_n \frac{dx^{\alpha}}{dt} $，带入得到：
+    \begin{equation}
+        T^{\alpha \beta}(x) = \sum_{n} \frac{p^{\alpha}_n p^{\beta}_n}{E_n} \, \delta^3(\bm{x}_0 - \bm{x}_n(t))
+    \end{equation}
+    从中我们可以看出$T^{\alpha \beta}$是对称张量。改写上式为更加对称的形式(变$\delta^3$为$\delta^4$)：
+    \begin{equation}
+        T^{\alpha \beta}(x) = \sum_{n} \int d\tau \, p_n^{\alpha} \frac{dx_n^{\beta}}{d\tau} \delta^4(x - x_n(\tau))
+    \end{equation}
+    其中每个量都是四维矢量，具有洛伦兹不变性，于是$T^{\alpha \beta}$也具有洛伦兹不变性。
+\end{definition}
+    观察式子\eqref{eq:1.27}，我们写出：
+    \begin{align}
+        \partial_{i} T^{\alpha i} = & \sum_{n} p_n^{\alpha}(t)\, \frac{\partial}{\partial x_{n}^{i}}\,\frac{d\bm{x}^{i}_n(t)}{dt} \delta^3(\bm{x}_0 - \bm{x}_n(t)) \notag \\
+                                  = & -\sum_{n} p_n^{\alpha}(t)\,\frac{\partial}{\partial t} \delta^3(\bm{x}_0 - \bm{x}_n(t)) \notag \\
+                                  = & -\frac{\partial}{\partial t} \sum_{n} p_n^{\alpha}(t)\delta^3(\bm{x}_0 - \bm{x}_n(t)) + \sum_{n} \frac{\partial p_n^{\alpha}(t)}{\partial t}\delta^3(\bm{x}_0 - \bm{x}_n(t)) \notag \\
+                                  = & -T^{0\alpha} + \sum_{n} \frac{\partial p_n^{\alpha}(t)}{\partial t}\delta^3(\bm{x}_0 - \bm{x}_n(t)) 
+    \end{align}
+    简单移项后令$\sum_{n} \frac{\partial p_n^{\alpha}(t)}{\partial t}\delta^3(\bm{x}_0 - \bm{x}_n(t)) = G^{\alpha}$为\textbf{力密度}，我们写出：
+    \begin{equation}
+        \partial_{\alpha} T^{\alpha\beta} = G^{\alpha}
+    \end{equation}
+    由于动量守恒，$p_n^{\alpha}$为不随时间变换的常数，我们得到守恒方程：
+    \begin{equation}
+        \partial_{\alpha} T^{\alpha\beta} = 0
+    \end{equation}
+    \begin{note}
+        根据该定义我们可以方便地给出自旋的定义，详见Weinberg引力与宇宙学。(待补充)
+    \end{note}
+\section{谐振子视角下的K-G场}
+省流：从经典场论出发，我们将经典标量场$\phi(\bm{x})$量子化，方法为将$\phi(\bm{x}),\pi(\bm{x})$用符合二次量子化的算子语言重新表述。
+
+对照经典对易关系，我们写出场量对易关系：
+\begin{equation}
+    [\phi(\bm{x}), \pi(\bm{y})] = \delta^3(\bm{x} - \bm{y});[\phi(\bm{x}), \phi(\bm{y})] = [\pi(\bm{x}), \pi(\bm{y})] = 0
+\end{equation}
+作为$\phi$和$\pi$的函数，哈密顿量$H$也成为了算符。我们下个任务就是寻找其本征谱。我们尝试构造动量p空间下的K-G方程，即在傅里叶空间写出Klein-Gordon方程：
+\begin{equation}
+    \phi(\bm{x},t) = \int \frac{d^3p}{(2\pi)^3} e^{i\bm{p}\cdot\bm{x}} \phi(\bm{p},t)
+\end{equation}
+其中$\phi^*(\bm{p}) = \phi(-\bm{p})$
+\section{四维时空中的K-G场理论}
+\label{ch:1.4}
+
+\subsection{K-G场的量子化}
+    在经典场论中，K-G场的哈密顿量为：
+    \begin{equation}
+        H = \int d^3x\,\left[ \frac{1}{2}\pi^2 + \frac{1}{2}(\nabla \phi)^2 + \frac{1}{2}m^2\phi^2 \right]
+    \end{equation}
+    其中$\pi$为动量算符。我们将$\phi$和$\pi$视作算符，满足对易关系：
+    \begin{equation}
+        [\phi(\bm{x}), \pi(\bm{y})] = i\delta^3(\bm{x} - \bm{y});[\phi(\bm{x}), \phi(\bm{y})] = [\pi(\bm{x}), \pi(\bm{y})] = 0
+    \end{equation}
+    这使得$\phi$和$\pi$可以被视作二次量子化的算符。
+
+    接下来，我们将K-G场的哈密顿量写成动量空间的形式：
+    \begin{equation}
+        H = \int d^3p\,\left[ a^{\dagger}(\bm{p})a(\bm{p})\left( p^2 + m^2 \right)^{1/2} + \frac{1}{2}\left( a^{\dagger}(\bm{p})a^{\dagger}(-\bm{p}) + a(-\bm{p})a(\bm{p}) \right) \right]
+    \end{equation}
+    其中$a^{\dagger}(\bm{p})$和$a(\bm{p})$分别是粒子的产生和湮灭算符。
+
+    通过对哈密顿量进行重新整理，我们可以将其写成谐振子的形式：
+    \begin{equation}
+        H = \int d^3p\,\left[ \omega_p \left( a^{\dagger}(\bm{p})a(\bm{p}) + \frac{1}{2} \right) \right]
+    \end{equation}
+    其中$\omega_p = \sqrt{p^2 + m^2}$是动量为$p$的粒子的能量。
+    这样，我们就将K-G场的量子化问题转化为了无数个独立谐振子的量子化问题。每个动量模式$p$对应一个谐振子，其能级由$a^{\dagger}(\bm{p})a(\bm{p})$的本征值决定。
+\section{小结}
+    通过对K-G场的量子化，我们成功地将经典场论中的
+    K-G方程转化为了量子场论中的谐振子模型。这一过程不仅揭示了场的量子性质，还为理解粒子的产生和湮灭提供了理论基础。未来的研究将进一步探讨相互作用场论以及更复杂的量子场模型。 
+\begin{equation}
+    L^{\; \nu}_{\mu}
+\end{equation}
+    
+\end{document}

@@ -38,48 +38,57 @@
 \usepackage{color} % 颜色支持
 \usepackage{hyperref}
 
+% 在 main.tex 的导言区中（documentclass 之后）
+\IfFileExists{fontspec.sty}{
+  % 把 TeXGyreTermesX 放大 12%（根据需要调 1.05..1.2）
+  \setmainfont[Scale=1.12]{TeXGyreTermesX}
+	% 可选：放大无衬线（示例值）
+	% 将模板原来的 texgyreheros 替换为系统常见的 Arial，以避免在未安装 TeX Gyre Heros 时出错
+	\setsansfont[Scale=1.08]{Arial}
+}{}
+
 % 设置主字体为仿宋（FZSSK.TTF），加粗字体为黑体（FZHTK.TTF），斜体为楷体（FZKTK.TTF）
 \setCJKmainfont[
-	Path={E:/BOOKS/Quantum Field Theory/QFT/font_2/},
+	Path={C:/Users/Bourbaki/OneDrive/Desktop/reading insights/communication/QFT-Note/font_2/},
 	BoldFont={FZHTK.TTF},
 	ItalicFont={FZKTK.TTF},
-	BoldItalicFont={FZHTK.TTF} % 将粗斜体指定为黑体
+	BoldItalicFont={FZHTK.TTF} % 将粗斜体指定为黑体C:\Users\Bourbaki\OneDrive\Desktop\reading insights\communication\QFT-Note\font_2
 ]{FZSSK.TTF}
 % % 设置无衬线字体为楷体（FZKTK.TTF），加粗字体为黑体（FZHTK.TTF）
-% \setCJKsansfont[Path={E:/postgraduate/note/font_2/}, BoldFont={FZHTK.TTF}]{FZKTK.TTF}
+% \setCJKsansfont[Path={C:/Users/Bourbaki/OneDrive/Desktop/reading insights/commucation/QFT-Note/font_2/}, BoldFont={FZHTK.ttf}]{FZKTK.ttf}
 %
 % % 设置等宽字体为仿宋（FZFSK.TTF），加粗字体为黑体（FZHTK.TTF）
-% \setCJKmonofont[Path={E:/postgraduate/note/font_2/}, BoldFont={FZHTK.TTF}]{FZFSK.TTF}
+% \setCJKmonofont[Path={C:/Users/Bourbaki/OneDrive/Desktop/reading insights/commucation/QFT-Note/font_2/}, BoldFont={FZHTK.ttf}]{FZFSK.ttf}	
 %
 % % 定义新的字体族 zhsong，为仿宋（FZSSK.TTF）
-% \setCJKfamilyfont{zhsong}[Path={E:/postgraduate/note/font_2/}]{FZSSK.TTF}
+% \setCJKfamilyfont{zhsong}[Path={C:/Users/Bourbaki/OneDrive/Desktop/reading insights/commucation/QFT-Note/font_2/}]{FZSSK.ttf}
 %
 % % 定义新的字体族 zhhei，为黑体（FZHTK.TTF）
-% \setCJKfamilyfont{zhhei}[Path={E:/postgraduate/note/font_2/}]{FZHTK.TTF}
+% \setCJKfamilyfont{zhhei}[Path={C:/Users/Bourbaki/OneDrive/Desktop/reading insights/commucation/QFT-Note/font_2/}]{FZHTK.ttf}
 %
 % % 定义新的字体族 zhkai，为楷体（FZKTK.TTF），加粗时用黑体（FZHTK.TTF）
-% \setCJKfamilyfont{zhkai}[Path={E:/postgraduate/note/font_2/}, BoldFont={FZHTK.TTF}]{FZKTK.TTF}
+% \setCJKfamilyfont{zhkai}[Path={C:/Users/Bourbaki/OneDrive/Desktop/reading insights/commucation/QFT-Note/font_2/}, BoldFont={FZHTK.ttf}]{FZKTK.ttf}
 %
 % % 定义新的字体族 zhfs，为仿宋（FZFSK.TTF），加粗时用黑体（FZHTK.TTF）
-% \setCJKfamilyfont{zhfs}[Path={E:/postgraduate/note/font_2/}, BoldFont={FZHTK.TTF}]{FZFSK.TTF}
+% \setCJKfamilyfont{zhfs}[Path={C:/Users/Bourbaki/OneDrive/Desktop/reading insights/commucation/QFT-Note/font_2/}, BoldFont={FZHTK.ttf}]{FZFSK.ttf}
 %
 % % 设置无衬线字体为楷体（FZKTK.TTF），加粗字体为黑体（FZHTK.TTF）
-\setCJKsansfont[Path={E:/BOOKS/Quantum Field Theory/QFT/font_2/}, BoldFont={FZHTK.TTF}]{FZKTK.TTF}
+\setCJKsansfont[Path={C:/Users/Bourbaki/OneDrive/Desktop/reading insights/communication/QFT-Note/font_2/}, BoldFont={FZHTK.TTF}]{FZKTK.TTF}
 
 % 设置等宽字体为仿宋（FZFSK.TTF），加粗字体为黑体（FZHTK.TTF）
-\setCJKmonofont[Path={E:/BOOKS/Quantum Field Theory/QFT/font_2/}, BoldFont={FZHTK.TTF}]{FZFSK.TTF}
+\setCJKmonofont[Path={C:/Users/Bourbaki/OneDrive/Desktop/reading insights/communication/QFT-Note/font_2/}, BoldFont={FZHTK.TTF}]{FZFSK.TTF}
 
 % 定义新的字体族 zhsong，为仿宋（FZSSK.TTF）
-\setCJKfamilyfont{zhsong}[Path={E:/BOOKS/Quantum Field Theory/QFT/font_2/}]{FZSSK.TTF}
+\setCJKfamilyfont{zhsong}[Path={C:/Users/Bourbaki/OneDrive/Desktop/reading insights/communication/QFT-Note/font_2/}]{FZSSK.TTF}
 
 % 定义新的字体族 zhhei，为黑体（FZHTK.TTF）
-\setCJKfamilyfont{zhhei}[Path={E:/BOOKS/Quantum Field Theory/QFT/font_2/}]{FZHTK.TTF}
+\setCJKfamilyfont{zhhei}[Path={C:/Users/Bourbaki/OneDrive/Desktop/reading insights/communication/QFT-Note/font_2/}]{FZHTK.TTF}
 
 % 定义新的字体族 zhkai，为楷体（FZKTK.TTF），加粗时用黑体（FZHTK.TTF）
-\setCJKfamilyfont{zhkai}[Path={E:/BOOKS/Quantum Field Theory/QFT/font_2/}, BoldFont={FZHTK.TTF}]{FZKTK.TTF}
+\setCJKfamilyfont{zhkai}[Path={C:/Users/Bourbaki/OneDrive/Desktop/reading insights/communication/QFT-Note/font_2/}, BoldFont={FZHTK.TTF}]{FZKTK.TTF}
 
 % 定义新的字体族 zhfs，为仿宋（FZFSK.TTF），加粗时用黑体（FZHTK.TTF）
-\setCJKfamilyfont{zhfs}[Path={E:/BOOKS/Quantum Field Theory/QFT/font_2/}, BoldFont={FZHTK.TTF}]{FZFSK.TTF}
+\setCJKfamilyfont{zhfs}[Path={C:/Users/Bourbaki/OneDrive/Desktop/reading insights/communication/QFT-Note/font_2/}, BoldFont={FZHTK.TTF}]{FZFSK.TTF}
 
 
 % 定义快捷命令 \songti 代表仿宋字体
